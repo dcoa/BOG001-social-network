@@ -5,8 +5,8 @@ import home from './views/home.js';
 import recover from './views/recover.js';
 
 header.style.display = 'none';
-const body = window.root;
+const body = document.getElementById('root');
 
-body.appendChild(recover());
+body.appendChild(home());
 console.log(home);
 myFunction();

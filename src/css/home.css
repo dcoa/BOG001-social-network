@@ -3,7 +3,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-image: url(img/home.png);
+  background-image: url(background/home.png);
   background-size: cover;
   padding: 30px;
 }
