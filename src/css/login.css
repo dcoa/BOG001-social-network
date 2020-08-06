@@ -1,0 +1,90 @@
+.container {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#login{
+  height: 450px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.input-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+}
+
+#login .logo{
+    max-width: 50%;
+    display:inline-block;
+}
+
+.input-container p{
+    font-size: 12px;
+    margin-top:10px;
+    font-family: 'Comfortaa';
+    padding: 15px;
+
+}
+
+.createAccount p {
+    color: white;
+    margin: 0px;
+    text-align: center;
+    font-family: 'Comfortaa';
+    font-size: 12px;
+}
+
+.createAccount .google {
+
+    margin-top: 10px;
+    display:block;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+.link {
+    color: #06B8C7;
+    font-family: Comfortaa;
+    font-size: 12px;
+
+}
+
+
+/*Tablet--------------------*/
+@media screen and (min-width: 768px) {
+
+#login .logo{
+    width: 30%;
+}
+#login .username   {
+        margin-top: 10px;
+
+      }
+
+}
+
+/* Desktop---------------------- */
+ @media screen and (min-width: 1127px) {
+   #login{
+     height: 550px;
+   }
+
+    #login .username   {
+            margin-top: 10px;
+            font-size: 15px;
+          }
+
+          #login .input-container p{
+              font-size: 15px;
+                      }
+  }

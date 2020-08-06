@@ -1,0 +1,45 @@
+.accountOne{
+  height: 100%;
+  display: flex;
+  padding: 0 20px;
+}
+
+  #createAccount{
+    margin: auto;
+    width: 300px;
+    height: 400px;
+    color:white;
+    font-family: 'Comfortaa', cursive;
+  }
+
+  #account{
+    margin: auto;
+    width: 200px;
+    height: 300px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-around;
+    flex-direction: column;
+  }
+
+
+  .controls{
+      display:block;
+      background: black;
+      color: white;
+      border-bottom: 1px solid white ;
+      border-radius: 0px;
+      text-align: left;
+  }
+
+
+
+ @media screen and (min-width:768px){
+   #account{
+     width: 300px;
+     padding: 0;
+   }
+    .controls{
+      width: 300px;
+    }
+  }

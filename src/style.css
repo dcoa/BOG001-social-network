@@ -1,5 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Anton&family=Comfortaa&family=Source+Sans+Pro&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Comfortaa:wght@300&family=Source+Sans+Pro&display=swap');
 @import "css/home.css";
+@import "css/login.css";
+@import "css/createAccount.css";
+@import "css/thanksAccount.css";
 @import "css/recover.css";
 
 body{
@@ -11,7 +14,8 @@ body{
   font-size: 16px;
   display: flex;
   flex-direction: column;
-  }
+  background-color: #000;
+}
 
 main{
   height: 100%;
@@ -26,7 +30,7 @@ h2{
   font-size: 1.2em;
 }
 
-label {
+label{
   font-family: 'Source Sans Pro';
 }
 
@@ -38,16 +42,27 @@ input{
   border-radius: 5px;
 }
 
+a{
+  text-decoration: none;
+  color: #05ADBA;
+}
+
 
 .btn{
+  align-self: center;
   text-align: center;
   height: 40px;
   width: 200px;
   background: #06B8C7;
   border: 2px solid #06B8C7;
-  border-radius: 6px;
+  border-radius: 5px;
   font-family: 'Comfortaa';
   color: #FFFFFF;
+
+}
+.btn:hover {
+   background: cadetblue ;
+   border-color: cadetblue;
 
 }
 
