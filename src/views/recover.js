@@ -1,5 +1,5 @@
 export default ()=>{
-  //history.replaceState({},'recoverAccaunt', 'recover');
+  history.replaceState({},'recoverAccount', '#recover');
   const recover = document.createElement('section');
   recover.setAttribute('class', 'recover');
 

@@ -1,4 +1,5 @@
 export default ()=>{
+    history.replaceState({},'log in', '#login');
     const signin = document.createElement('div');
     signin.setAttribute('class', 'container');
 
@@ -12,13 +13,13 @@ export default ()=>{
     input.innerHTML = `<input type="text" class="username" placeholder="User name o email">
           <br>
           <input type="text" class="username" placeholder="Contraseña">
-          <p>¿Olvidaste tú contraseña? <a href="/recover">Click aquí</a></p>
+          <p>¿Olvidaste tú contraseña? <a href="#recover">Click aquí</a></p>
           <button type="button" class="btn">ENTRAR</button>`;
 
 
     const createAccount = document.createElement('div');
     createAccount.setAttribute('class', 'createAccount');
-    createAccount.innerHTML = `<p>¿Eres un usuario nuevo? <a href="/createAccount">Crea una cuenta</a></p>
+    createAccount.innerHTML = `<p>¿Eres un usuario nuevo? <a href="#createAccount">Crea una cuenta</a></p>
                 <p>o inglesa con</p>
                 <img src="img/google.png" width="30" height="30" class="google">`;
 

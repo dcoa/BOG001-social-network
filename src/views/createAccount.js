@@ -1,4 +1,5 @@
 export default ()=>{
+    history.replaceState({},'createAccount', '#createAccount');
     const createAccount = document.createElement('div');
     createAccount.setAttribute('class', 'accountOne');
 
