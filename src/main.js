@@ -10,27 +10,40 @@ import otherThank from './views/thankAccount.js';
 const body = document.getElementById('root');
 body.appendChild(home());
 
-const router = (rute)=>{
-  body.innerHTML = " ";
+const router = (rute) => {
+  body.innerHTML = ' ';
   switch (rute) {
-    case "#home":
+    case '#home':
       return body.appendChild(home());
-    case "#login":
+    case '#login':
       return body.appendChild(login());
-    case "#createAccount":
+    case '#createAccount':
       return body.appendChild(createAccount());
-    case "#recover":
+    case '#recover':
       return body.appendChild(recover());
+    case '#thankAccount':
+      return body.appendChild(otherThank());
       break;
     default:
   }
-}
+};
 
-
-header.style.display = 'none';
-
-window.addEventListener('hashchange', ()=>{
-    router(window.location.hash);
-})
+window.addEventListener('hashchange', () => {
+  router(window.location.hash);
+});
 console.log(home);
+
+const logout = document.querySelector('#logout');
+logout.addEventListener('click', () => {
+  signOut();
+});
+
+async function signOut() {
+  try {
+    const userOut = await auth.signOut();
+    console.log('user out');
+  } catch (e) {
+    console.log(e);
+  }
+}
 myFunction();
