@@ -21,12 +21,12 @@
 }
 
 h2{
-  font-family: 'Comfortaa';
+  font-family: 'Comfortaa', sans-serif;
   font-size: 1.2em;
 }
 
 .recover p{
-  font-family: 'Source Sans Pro';
+  font-family: 'Source Sans Pro', sans-serif;
   font-size: 1em;
   display: none;
 }

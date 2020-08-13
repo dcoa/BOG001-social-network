@@ -1,5 +1,6 @@
+import { recoverPass } from '../lib/firebaseAuth.js';
+
 export default () => {
-  history.replaceState({}, 'recoverAccount', '#recover');
   const recover = document.createElement('section');
   recover.setAttribute('class', 'recover');
 
@@ -19,15 +20,6 @@ export default () => {
     console.log(email);
     recoverPass(message, email);
   });
+
   return recover;
 };
-
-async function recoverPass(message, email) {
-  try {
-    const sendEmail = await auth.sendPasswordResetEmail(email);
-    message.innerHTML = `Hemos enviado un email a ${email.value} para cambiar la contraseña`;
-  } catch (error) {
-    message.innerHTML = `No se ha podido enviar el correo de verificación`;
-    console.log('No se ha podido enviar el correo de verificación');
-  }
-}

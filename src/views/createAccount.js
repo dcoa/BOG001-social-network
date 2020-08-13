@@ -1,5 +1,6 @@
+import { signUp } from '../lib/firebaseAuth.js';
+
 export default () => {
-  history.replaceState({}, 'createAccount', '#createAccount');
   const createAccount = document.createElement('div');
   createAccount.setAttribute('class', 'accountOne');
 
@@ -8,20 +9,20 @@ export default () => {
 
   sectionAccount.innerHTML = ` <h1>Crea una nueva Cuenta</h1>
           <form id="account">
-          <label for="nameUser">Nombre de Usuario</label>
-          <input type="text" id="nameUser" class="controls" placeholder="Nombre de Usuario" required title="Llena el campo"/>
-          <br>
-          <label for="correo">Email</label>
-          <input type="text" id="correo" class="controls" placeholder="usuario@gmail.com"  required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="Inserta un correo electronico válido"/>
-          <br>
-          <label for="contraseña">Contraseña</label>
-          <input type="password" id="contraseña" class="controls" placeholder="*********" required pattern=".{6,}" title="Debe contener 6 o más carácteres"/>
-          <br>
-          <label for="birthday">Fecha de Nacimiento</label>
-          <input type="text" id="birthday" class="controls" placeholder="27/08/2000" required  pattern= "(0[1-9]|1[0-9]|2[0-9]|3[01])/(0[1-9]|1[012])/[0-9]{4}" title="Día/Mes/Año"/>
-          <br>
-          <br>
-          <button type= "submit" id="buttonOne" class="btn">REGISTRARSE</button>
+            <label for="nameUser">Nombre de Usuario</label>
+            <input type="text" id="nameUser" class="controls" placeholder="Nombre de Usuario" required title="Llena el campo"/>
+            <br>
+            <label for="correo">Email</label>
+            <input type="text" id="correo" class="controls" placeholder="usuario@gmail.com"  required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="Inserta un correo electronico válido"/>
+            <br>
+            <label for="contraseña">Contraseña</label>
+            <input type="password" id="contraseña" class="controls" placeholder="*********" required pattern=".{6,}" title="Debe contener 6 o más carácteres"/>
+            <br>
+            <label for="birthday">Fecha de Nacimiento</label>
+            <input type="text" id="birthday" class="controls" placeholder="27/08/2000" required  pattern= "(0[1-9]|1[0-9]|2[0-9]|3[01])/(0[1-9]|1[012])/[0-9]{4}" title="Día/Mes/Año"/>
+            <br>
+            <br>
+            <button type= "submit" id="buttonOne" class="btn">REGISTRARSE</button>
           </form>`;
 
   createAccount.appendChild(sectionAccount);
@@ -35,19 +36,6 @@ export default () => {
     console.log(nameUser, email, password, birthday);
     signUp(email, password);
   });
+  
   return createAccount;
 };
-
-
-async function signUp(email, password) {
-  try {
-    const newUser = await auth.createUserWithEmailAndPassword(email, password);
-    console.log(newUser.user);
-    window.location = '#thankAccount';
-  } catch (error) {
-    // Handle Errors here.
-    const errorCode = error.code;
-    const errorMessage = error.message;
-    console.log(errorCode, errorMessage);
-  }
-}

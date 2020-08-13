@@ -20,6 +20,7 @@
     justify-content: center;
     align-items: center;
     margin: auto;
+    margin-bottom: 20px;
 }
 
 #login .logo{
@@ -30,7 +31,7 @@
 .input-container p{
     font-size: 12px;
     margin-top:10px;
-    font-family: 'Comfortaa';
+    font-family: 'Comfortaa', sans-serif;
     padding: 15px;
 
 }
@@ -39,7 +40,7 @@
     color: white;
     margin: 0px;
     text-align: center;
-    font-family: 'Comfortaa';
+    font-family: 'Comfortaa', sans-serif;
     font-size: 12px;
 }
 
@@ -54,7 +55,7 @@
 
 .link {
     color: #06B8C7;
-    font-family: Comfortaa;
+    font-family: 'Comfortaa', sans-serif;
     font-size: 12px;
 
 }
@@ -79,12 +80,15 @@
      height: 550px;
    }
 
-    #login .username   {
+    #login .username {
             margin-top: 10px;
             font-size: 15px;
           }
+    .input-container{
+      margin-top: 0px;
+    }
 
-          #login .input-container p{
-              font-size: 15px;
-                      }
+    .input-container p{
+        font-size: 15px;
+      }
   }
