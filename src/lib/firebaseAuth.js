@@ -2,13 +2,17 @@
 export async function signUp(email, password) {
   try {
     const newUser = await auth.createUserWithEmailAndPassword(email, password);
+    window.location.hash = "#thankAccount";
     console.log(newUser.user);
-    window.location = '#thankAccount';
+    return newUser;
+
+
   } catch (error) {
     // Handle Errors here.
     const errorCode = error.code;
     const errorMessage = error.message;
     console.log(errorCode, errorMessage);
+    return error;
   }
 }
 
@@ -16,6 +20,7 @@ export async function signUp(email, password) {
 export async function logIn(email, password) {
   try {
     const userLogIn = await auth.signInWithEmailAndPassword(email, password);
+    return userLogIn;
   } catch (error) {
     // Handle Errors here.
     const errorCode = error.code;
@@ -48,9 +53,9 @@ export async function logInGoogle(provider) {
 export async function recoverPass(message, email) {
   try {
     const sendEmail = await auth.sendPasswordResetEmail(email);
-    message.innerHTML = `Hemos enviado un email a ${email} para cambiar la contraseña`;
+    return message.innerHTML = `Hemos enviado un email a ${email} para cambiar la contraseña`;
   } catch (error) {
-    message.innerHTML = 'No se ha podido enviar el correo de verificación';
+    return message.innerHTML = 'No se ha podido enviar el correo de verificación';
     console.log('No se ha podido enviar el correo de verificación');
   }
 }
@@ -59,6 +64,7 @@ export async function recoverPass(message, email) {
 export async function signOut() {
   try {
     const userOut = await auth.signOut();
+    return userOut;
     console.log('user out');
   } catch (e) {
     console.log(e);

@@ -9,7 +9,7 @@ import otherThank from './views/thankAccount.js';
 const body = document.getElementById('root');
 const header = document.getElementById('header');
 
-auth.onAuthStateChanged(function (user) {
+auth.onAuthStateChanged((user) => {
   if (user) {
     header.style.display = 'block';
     console.log('esta dentro');

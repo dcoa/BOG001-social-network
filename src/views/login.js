@@ -6,7 +6,7 @@ export default () => {
 
   const login = document.createElement('section');
   login.setAttribute('id', 'login');
-  login.innerHTML = `<img src="img/icon.png" alt="logo_image" class="logo"/>`;
+  login.innerHTML = '<img src="img/icon.png" alt="logo_image" class="logo"/>';
 
   const input = document.createElement('form');
   input.setAttribute('class', 'input-container');
@@ -37,6 +37,6 @@ export default () => {
     const provider = new firebase.auth.GoogleAuthProvider();
     logInGoogle(provider);
   });
-  
+
   return signin;
 };

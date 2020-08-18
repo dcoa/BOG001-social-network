@@ -7,7 +7,7 @@ export default () => {
   home.addEventListener('click', () => {
     window.location = '#login';
   });
-  
+
   return home;
 };
 

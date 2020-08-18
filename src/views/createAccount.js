@@ -33,9 +33,10 @@ export default () => {
     const email = form.correo.value;
     const password = form.contraseña.value;
     const birthday = form.birthday.value;
-    console.log(nameUser, email, password, birthday);
     signUp(email, password);
+    window.location.hash = '#thankAccount';
+
   });
-  
+
   return createAccount;
 };
