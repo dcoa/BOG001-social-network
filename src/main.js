@@ -5,13 +5,14 @@ import login from './views/login.js';
 import createAccount from './views/createAccount.js';
 import recover from './views/recover.js';
 import otherThank from './views/thankAccount.js';
+import timeline from './views/timeline.js';
 
 const body = document.getElementById('root');
 const header = document.getElementById('header');
 
 auth.onAuthStateChanged((user) => {
   if (user) {
-    header.style.display = 'block';
+    window.location.hash = '#timeline';
     console.log('esta dentro');
   } else {
     console.log('debe entrar');
@@ -37,17 +38,24 @@ const router = (rute) => {
     case '#thankAccount':
       return body.appendChild(otherThank());
       break;
+    case '#timeline':
+      return body.appendChild(timeline());
+      break;
     default:
   }
 };
 
 window.addEventListener('hashchange', () => {
   router(window.location.hash);
+  if(window.location.hash == '#timeline' || window.location.hash =='#profile'){
+    header.style.display = 'block';
+  }else{
+    header.style.display = 'none';
+  }
 });
 
 
 const logout = document.querySelector('#logout');
 logout.addEventListener('click', () => {
   signOut();
-  header.style.display = 'none';
 });

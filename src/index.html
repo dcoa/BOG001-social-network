@@ -8,10 +8,23 @@
    <title>Helivisuel</title>
 </head>
 <body>
-  <header id="header" >
-    <nav>
-      <a href="#login" id="logout">Salir</a>
-    </nav>
+    <header id="header" >
+      <nav id="wall">
+        <input type="checkbox" id="check">
+        <label class="icon">
+          <a class="logo-desk" href="#timeline"><img id="img-logo" src="img/icon.png" alt="logo"/></a>
+        </label>
+        <label for="check" class="checkbtn" >
+         <img src="img/menu.png" alt="logo" width="50px"/>
+        </label>
+        <ul>
+          <li><img class"icons" src="img/profile.png" ><a href="#profile"  class="optionsWall perfil">Perfil</a></li>
+          <li><img class"icons" src="img/movie.png"><a href="#movies"  class="optionsWall movie">Peliculas</a></li>
+          <li><img class"icons" src="img/serie.png" ><a href="#series"  class="optionsWall serie">Series</a></li>
+          <li><img class"icons" src="img/documentary.png" ><a href="#documentary"  class="optionsWall documentary">Documentales</a></li>
+          <li id="logout"><img class"icons" src="img/exit.png"><a class="optionsWall exit">Cerrar Sesión</a></li>
+        </ul>
+      </nav>
   </header>
   <main id="root"></main>
   <footer id="footer">
