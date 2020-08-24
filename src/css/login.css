@@ -23,6 +23,11 @@
     margin-bottom: 20px;
 }
 
+.input-container input{
+  margin: 5px;
+}
+
+
 #login .logo{
     max-width: 50%;
     display:inline-block;

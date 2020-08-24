@@ -70,3 +70,8 @@ export async function signOut() {
     console.log(e);
   }
 }
+
+export  function currentUser() {
+    const user =  auth.currentUser;
+    return user;
+}

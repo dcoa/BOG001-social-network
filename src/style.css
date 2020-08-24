@@ -1,9 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Anton&family=Comfortaa:wght@300&family=Source+Sans+Pro&display=swap');
+
 @import "css/home.css";
 @import "css/login.css";
 @import "css/createAccount.css";
 @import "css/thanksAccount.css";
 @import "css/recover.css";
+@import "css/timeline.css";
+@import "css/modal.css";
 
 body{
   margin: 0px;
@@ -33,7 +36,7 @@ h2{
   font-size: 1.2em;
 }
 
-label{
+label, p{
   font-family: 'Source Sans Pro';
 }
 
@@ -134,24 +137,6 @@ nav {
 #check{
     display: none;
   }
-
-.btn{
-  align-self: center;
-  text-align: center;
-  height: 40px;
-  width: 200px;
-  background: #06B8C7;
-  border: 2px solid #06B8C7;
-  border-radius: 5px;
-  font-family: 'Comfortaa';
-  color: #FFFFFF;
-
-}
-.btn:hover {
-   background: cadetblue ;
-   border-color: cadetblue;
-
-}
 
 footer{
   align-items: center;
