@@ -6,6 +6,8 @@ import createAccount from './views/createAccount.js';
 import recover from './views/recover.js';
 import otherThank from './views/thankAccount.js';
 import timeline from './views/timeline.js';
+import profile from './views/profile.js';
+
 
 const body = document.getElementById('root');
 const header = document.getElementById('header');
@@ -40,6 +42,9 @@ const router = (rute) => {
       break;
     case '#timeline':
       return body.appendChild(timeline());
+      break;
+    case '#profile':
+      return body.appendChild(profile());
       break;
     default:
   }

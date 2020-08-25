@@ -32,9 +32,9 @@ export const publish = (userPhoto) =>{
   publish.addEventListener('submit', (e)=>{
     e.preventDefault();
     modal.style.display = 'none';
+  });
 
-  })
-  modal.querySelector('.close').addEventListener('click', ()=> modal.style.display = 'none')
+  modal.querySelector('.close').addEventListener('click', ()=> modal.style.display = 'none');
 
   return  modal;
 };
