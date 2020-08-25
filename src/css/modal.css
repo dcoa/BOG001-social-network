@@ -29,6 +29,7 @@
   color: #06B8C7;
   font-size: 28px;
   font-weight: bold;
+  display: block;
 }
 
 .close:hover, .close:focus {

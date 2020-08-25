@@ -7,11 +7,15 @@
 @import "css/recover.css";
 @import "css/timeline.css";
 @import "css/modal.css";
-
-body{
+*{
   margin: 0px;
   padding: 0px;
   box-sizing: border-box;
+}
+
+
+body{
+
   color: #FFFFFF;
   height: 100vh;
   font-size: 16px;
@@ -26,8 +30,8 @@ main{
 
 header{
   display: none;
-  height: 40px;
-  padding: 20px;
+  height: 67px;
+  padding: 10px;
   border-bottom: 3px solid #FFFFFF;
 }
 
@@ -152,22 +156,20 @@ footer{
 @media screen and (min-width: 768px){
 header {
   width: 100vw;
-  height: 50px;
-  padding: 20px;
+  height: 80px;
+  padding: 10px 30px;
   }
   header > nav ul {
     float: right;
     list-style-type: none;
     flex-direction: row;
     top: 0;
-    width: 70%;
-    height: 80px;
+    width: 80%;
+    height: 50px;
     background:#000;
     top: 0;
     margin: 5px;
     right: -100%;
-    width:  80%;
-    height: 80px;
     text-align: center;
     transition: none;
   }
@@ -209,7 +211,6 @@ header {
     float: right;
     cursor: pointer;
     line-height: 80px;
-    margin-right: 40px;
   }
 }
 
@@ -217,7 +218,7 @@ header {
 @media screen and (min-width: 1000px){
   header{
     width: 100vw;
-    height: 80px;
+    height: 100px;
   }
   #img-logo{
     width: 80px;
@@ -230,7 +231,7 @@ header {
   header > nav ul {
   	overflow:hidden;
     position: fixed;
-    margin-top: 20px;
+    margin-top: 15px;
     width: 70%;
     height: 80px;
     background:#000;
