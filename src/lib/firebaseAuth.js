@@ -1,9 +1,17 @@
 // createAccount
-export async function signUp(email, password) {
+export  function currentUser() {
+    const user =  auth.currentUser;
+    return user;
+}
+
+export async function signUp(email, password, name) {
   try {
     const newUser = await auth.createUserWithEmailAndPassword(email, password);
+    const currentUser = await auth.currentUser;
+    currentUser.updateProfile({displayName: name});
+
     window.location.hash = "#thankAccount";
-    console.log(newUser.user);
+
     return newUser;
 
 
@@ -69,9 +77,4 @@ export async function signOut() {
   } catch (e) {
     console.log(e);
   }
-}
-
-export  function currentUser() {
-    const user =  auth.currentUser;
-    return user;
 }

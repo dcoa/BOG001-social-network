@@ -33,7 +33,7 @@ export default () => {
     const email = form.correo.value;
     const password = form.contraseña.value;
     const birthday = form.birthday.value;
-    signUp(email, password);
+    signUp(email, password, nameUser);
     window.location.hash = '#thankAccount';
 
   });

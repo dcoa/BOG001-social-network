@@ -1,7 +1,147 @@
-#timelineBody{
+/*#timelineBody{
   display: flex;
   flex-direction: column;
   width: 100%;
   height: 100%;
   background-color: #FFFFF0;
+}*/
+
+.containerTimeline {
+   height: 100%;
+   display: block;
+   justify-content: center;
+   align-items: center;
+   background-color: #FFFFF0;
+ }
+
+
+/*POSTS*/
+
+.newsfeed {
+ padding: 0 20px;
+
+}
+
+.card {
+ width: 100%;
+ height: 100%;
+ background: #DADADA;
+ box-shadow: 0 0 12px 2px rgba(0, 0, 0, .5);
+ margin-bottom: 20px;
+ border-radius: 10px;
+ font-size: 14px;
+ font-family: 'Anton';
+ color: black;
+}
+
+.card .content {
+ display: flex;
+ flex-direction: column;
+ padding: 15px 10px;
+ margin-top:50px;
+}
+
+.card .header {
+ display: flex;
+ align-items: center;
+}
+
+.card .profile-pic {
+ background-image: url('../img/user.png');
+ background-position: 50%;
+ background-size: cover;
+ height: 50px;
+ width: 50px;
+ border-radius: 50%;
+}
+
+.card .detail {
+ margin-left: 10px;
+}
+
+.card .posted {
+ font-size: 10px;
+ padding-top: 3px;
+ font-family: 'Comfortaa';
+ color: black;
+}
+
+.card .desc {
+ padding-top: 10px;
+ line-height: 1.5;
+ font-family: 'Source Sans Pro';
+ color: black;
+}
+
+.card .categories {
+ background-image: url('../img/serie.png');
+ background-position: 50%;
+ background-size: cover;
+ height: 30px;
+ width: 30px;
+ margin-left: 130px;
+
+}
+
+/*COMMENTS*/
+
+.comments {
+ margin-top: 20px;
+ width: 70%;
+ height: 100%;
+ background: #4A4143;
+ box-shadow: 0 0 12px 2px rgba(0, 0, 0, .5);
+ margin-bottom: 20px;
+ border-radius: 10px;
+ font-size: 14px;
+ font-family: 'Source Sans Pro';
+ color: white;
+ padding: 15px;
+ margin-left: 70px;
+ }
+
+.comments content {
+ display: flex;
+ flex-direction: column;
+ padding: 15px 10px;
+ margin-top:50px;
+
+}
+
+.icons {
+ margin-left: 200px;
+}
+
+.icons .commentaries {
+ margin-left: 30px;
+}
+
+.btnCommentaries {
+ margin-top: 10px;
+ align-self: center;
+ text-align: center;
+ height: 40px;
+ width: 100px;
+ background: #06B8C7;
+ border: 2px solid #06B8C7;
+ border-radius: 5px;
+ font-family: 'Anton';
+ color: #FFFFFF;
+ margin-left: 225px;
+
+
+}
+
+.inputComment {
+ font-family: 'Source Sans Pro';
+ width: 100%;
+
+}
+
+.input-comment {
+ padding: 0 20px;
+}
+
+.inputCommentandButton {
+ display: none;
 }
