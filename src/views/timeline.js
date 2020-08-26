@@ -8,11 +8,14 @@ console.log(auth.currentUser);
 const timelineContainer = document.createElement('section');
 timelineContainer.setAttribute('class', 'containerTimeline');
 
-
+const newBtn = document.createElement('button');
+newBtn.setAttribute('class', 'btn');
+newBtn.type = 'submit';
+newBtn.textContent = 'NUEVA PUBLICACIÓN';
 
 const card = document.createElement('section')
 card.setAttribute('class', 'newsfeed');
-card.innerHTML = `<button type="submit" class=" btn btnlogin">NUEVA PUBLICACIÓN</button>
+card.innerHTML = `
    <div class="card">
     <div class="content">
     <div class="header">
@@ -51,16 +54,17 @@ comments.innerHTML = `
     </div></div>`;
 
 
-
+timelineContainer.appendChild(newBtn);
 timelineContainer.appendChild(card);
 timelineContainer.appendChild(icons);
 timelineContainer.appendChild(comments);
 
+let user = currentUser();
 
-
-
-
-
+newBtn.addEventListener('click', () => {
+  const modal = timelineContainer.appendChild(publish(user.photoURL));
+  modal.style.display = "flex";
+});
 
 icons.querySelector('.commentaries').addEventListener('click', () => {
 icons.querySelector('.inputCommentandButton').style.display = "block";

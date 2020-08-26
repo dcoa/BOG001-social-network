@@ -16,7 +16,6 @@
 
 
 body{
-
   color: #FFFFFF;
   height: 100vh;
   font-size: 16px;
@@ -143,16 +142,6 @@ nav {
     display: none;
   }
 
-footer{
-  align-items: center;
-  flex-direction: column;
-  text-align: center;
-  font-family: 'Anton', sans-serif;
-  font-size: 0.7em;
-  background: #000;
-  height: 50px;
-  border-top: 3px solid #FFFFFF;
-}
 
 @media screen and (min-width: 768px){
 header {
