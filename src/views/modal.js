@@ -36,11 +36,12 @@ export const publish = (userPhoto, userID) =>{
     const comment = publish.comment.value;
     const category = publish.category.value;
     commentPublish(comment, category, userID);
-
+    publish.reset();
     modal.style.display = 'none';
   });
 
-  modal.querySelector('.close').addEventListener('click', ()=> modal.style.display = 'none');
+  modal.querySelector('.close').addEventListener('click', ()=> {
+    modal.style.display = 'none'});
 
   return  modal;
 };
