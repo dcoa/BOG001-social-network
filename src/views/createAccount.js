@@ -18,8 +18,8 @@ export default () => {
             <label for="contraseña">Contraseña</label>
             <input type="password" id="contraseña" class="controls" placeholder="*********" required pattern=".{6,}" title="Debe contener 6 o más carácteres"/>
             <br>
-            <label for="birthday">Fecha de Nacimiento</label>
-            <input type="text" id="birthday" class="controls" placeholder="27/08/2000" required  pattern= "(0[1-9]|1[0-9]|2[0-9]|3[01])/(0[1-9]|1[012])/[0-9]{4}" title="Día/Mes/Año"/>
+            <label for="birthday">Fecha de Nacimiento (Opcional)</label>
+            <input type="text" id="birthday" class="controls" placeholder="27/08/2000"  pattern= "(0[1-9]|1[0-9]|2[0-9]|3[01])/(0[1-9]|1[012])/[0-9]{4}" title="Día/Mes/Año"/>
             <br>
             <br>
             <button type= "submit" id="buttonOne" class="btn">REGISTRARSE</button>
@@ -33,7 +33,7 @@ export default () => {
     const email = form.correo.value;
     const password = form.contraseña.value;
     const birthday = form.birthday.value;
-    signUp(email, password, nameUser);
+    signUp(email, password, nameUser, birthday);
     window.location.hash = '#thankAccount';
 
   });

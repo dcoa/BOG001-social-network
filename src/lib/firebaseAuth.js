@@ -4,16 +4,16 @@ export  function currentUser() {
     return user;
 }
 
-export async function signUp(email, password, name) {
+export async function signUp(email, password, name, birthday) {
   try {
     const newUser = await auth.createUserWithEmailAndPassword(email, password);
-    const currentUser = await auth.currentUser;
+    let currentUser = await auth.currentUser;
     currentUser.updateProfile({displayName: name});
+    let userDb = await data.collection('users').doc(currentUser.uid).set({birthday,});
 
     window.location.hash = "#thankAccount";
 
     return newUser;
-
 
   } catch (error) {
     // Handle Errors here.
