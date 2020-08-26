@@ -1,9 +1,7 @@
 import { currentUser } from '../lib/firebaseAuth.js';
 import {publish} from './modal.js';
 
-
 export default () => {
-console.log(auth.currentUser);
 
 const timelineContainer = document.createElement('section');
 timelineContainer.setAttribute('class', 'containerTimeline');
@@ -62,7 +60,7 @@ timelineContainer.appendChild(comments);
 let user = currentUser();
 
 newBtn.addEventListener('click', () => {
-  const modal = timelineContainer.appendChild(publish(user.photoURL));
+  const modal = timelineContainer.appendChild(publish(user.photoURL, user.uid));
   modal.style.display = "flex";
 });
 
@@ -74,17 +72,3 @@ icons.querySelector('.inputCommentandButton').style.display = "block";
 
 return timelineContainer;
 };
-
-/*export default () => {
-  const timeline = document.createElement('section');
-  timeline.setAttribute('id', 'timelineBody');
-  timeline.innerHTML = `<button type="button" class="btn newpublish">NUEVA PUBLICACIÓN</button>`;
-  let user = currentUser();
-  console.log(user.photoURL);
-  timeline.querySelector('.newpublish').addEventListener('click', () => {
-    const modal = timeline.appendChild(publish(user.photoURL));
-    modal.style.display = "flex";
-  });
-
-  return timeline;
-};*/

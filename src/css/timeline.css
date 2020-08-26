@@ -9,7 +9,7 @@
 .containerTimeline {
    height: 100%;
    display: flex;
-   justify-content: center;
+   justify-content: space-around;
    flex-direction: column;
    align-items: center;
    background-color: #FFFFF0;
