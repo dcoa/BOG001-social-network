@@ -1,6 +1,6 @@
 import { commentPublish } from '../lib/firebaseFirestore.js';
 
-export const publish = (userPhoto, userID) =>{
+export const publish = (userPhoto, userID, userName) =>{
   const modal = document.createElement('section');
   modal.setAttribute('class', 'modal');
   modal.innerHTML = `<div class="modal-content">
@@ -10,12 +10,12 @@ export const publish = (userPhoto, userID) =>{
           <p>Comenta sobre tus peliculas o series favoritas</p>
         </header>
         <form id='formComment' enctype="multipart/form-data">
-          <textarea id="comment"rows="2"></textarea>
+          <textarea id="comment"rows="2" required></textarea>
           <div>
             <label>
               <input type="file" id="loadImg">
             </label>
-            <select id="category">
+            <select id="category" required>
               <option value="0"> Categoría &#9660;</option>
               <option value="Movie">Peliculas</option>
               <option value="Documentary">Documentales</option>

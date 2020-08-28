@@ -4,9 +4,9 @@ export const commentPublish = (comment, category, userID) => {
     userDocRef.collection('userComments').doc().set({
       comment,
       category,
+      userID,
     });
   } catch (e) {
     console.log(e);
   }
-
-}
+};
