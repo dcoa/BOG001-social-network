@@ -16,7 +16,7 @@ export const publish = (userPhoto, userID, userName) =>{
               <input type="file" id="loadImg">
             </label>
             <select id="category" required>
-              <option value="0"> Categoría &#9660;</option>
+              <option value=""> Categoría &#9660;</option>
               <option value="Movie">Peliculas</option>
               <option value="Documentary">Documentales</option>
               <option value="Serie">Series</option>
