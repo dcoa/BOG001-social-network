@@ -8,6 +8,7 @@
 @import "css/timeline.css";
 @import "css/profile.css";
 @import "css/modal.css";
+
 *{
   margin: 0px;
   padding: 0px;
@@ -17,15 +18,10 @@
 
 body{
   color: #FFFFFF;
-  height: 100vh;
   font-size: 16px;
   display: flex;
   flex-direction: column;
   background-color: #000;
-}
-
-main{
-  height: 100%;
 }
 
 header{
@@ -77,7 +73,8 @@ a{
 }
 
 footer{
-  align-items: center;
+  display: flex;
+  justify-content: center;
   flex-direction: column;
   text-align: center;
   font-family: 'Anton', sans-serif;
@@ -103,16 +100,16 @@ header > nav ul li img{
   margin: 0 20px;
 }
 header > nav ul{
-  position: fixed;
+  position: absolute;
   padding-inline-start: 0;
   width: 55%;
   height: 200px;
-  display: flex;
+  display: none;
   flex-direction: column;
   justify-content: space-around;
   background:#06B8C7;
   top: 67px;
-  right: -100vh;
+    right: -100vh;
   text-align: left;
   transition: all .5s;
 }
@@ -123,6 +120,7 @@ header > nav ul li{
 }
 
 #check:checked ~ ul{
+  display: flex;
   right: 0;
 }
 
@@ -149,6 +147,7 @@ header {
   height: 80px;
   padding: 10px 30px;
   }
+
   header > nav ul {
     float: right;
     list-style-type: none;
@@ -219,10 +218,11 @@ header {
   }
 
   header > nav ul {
+    display: flex;
   	overflow:hidden;
-    position: fixed;
+    position: absolute;
     margin-top: 15px;
-    width: 70%;
+    width: 80%;
     height: 80px;
     background:#000;
     top: 0;
@@ -241,6 +241,7 @@ header {
   }
 
   header > nav ul li .optionsWall {
+    width: 150px;
   	color:#fff;
   	padding:0px 30px;
   	display:flex;
