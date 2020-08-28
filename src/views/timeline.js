@@ -3,17 +3,50 @@ import {publish} from './modal.js';
 
 export default () => {
 
-const timelineContainer = document.createElement('section');
-timelineContainer.setAttribute('class', 'containerTimeline');
+  let user = currentUser();
 
-const newBtn = document.createElement('button');
-newBtn.setAttribute('class', 'btn');
-newBtn.type = 'submit';
-newBtn.textContent = 'NUEVA PUBLICACIÓN';
+  const timelineContainer = document.createElement('section');
+  timelineContainer.setAttribute('class', 'containerTimeline');
 
-const card = document.createElement('section')
-card.setAttribute('class', 'newsfeed');
-card.innerHTML = `
+  const newBtn = document.createElement('button');
+  newBtn.setAttribute('class', 'btn');
+  newBtn.type = 'submit';
+  newBtn.textContent = 'NUEVA PUBLICACIÓN';
+
+  const card = document.createElement('section')
+  card.setAttribute('class', 'newsfeed');
+
+  timelineContainer.appendChild(newBtn);
+  timelineContainer.appendChild(card);
+  const modal = timelineContainer.appendChild(publish(user.photoURL, user.uid));
+
+  data.collectionGroup('userComments').orderBy('date').onSnapshot((querySnapshot)=>{
+    querySnapshot.forEach((doc) => {
+      card.appendChild(printPost(doc.data()));
+    });
+  });
+
+
+  newBtn.addEventListener('click', () => {
+    modal.style.display = "flex";
+  });
+
+//icons.querySelector('.commentaries').addEventListener('click', () => {
+//icons.querySelector('.inputCommentandButton').style.display = "block";});
+
+
+  return  timelineContainer;
+};
+
+function printPost(post){
+  let newpost = document.createElement('div');
+  newpost.setAttribute('class', 'card');
+  newpost.innerHTML = post.comment;
+
+  return newpost;
+}
+
+/*card.innerHTML = `
    <div class="card">
     <div class="content">
     <div class="header">
@@ -49,28 +82,4 @@ comments.innerHTML = `
     </div>
     <div class="desc">
     "La pelicula El Origen tiene una calificación IMDb 8.8/10, pero para mi deberia ser 5/10, ¿Ustedes que opinan?
-    </div></div>`;
-
-timelineContainer.appendChild(newBtn);
-timelineContainer.appendChild(card);
-timelineContainer.appendChild(icons);
-timelineContainer.appendChild(comments);
-
-let user = currentUser();
-data.collectionGroup('userComments').onSnapshot(function(querySnapshot) {
-        querySnapshot.forEach(function(doc) {
-            // doc.data() is never undefined for query doc snapshots
-            console.log(doc.id, " => ", doc.data());
-        }); });
-const modal = timelineContainer.appendChild(publish(user.photoURL, user.uid));
-
-newBtn.addEventListener('click', () => {
-  modal.style.display = "flex";
-});
-
-icons.querySelector('.commentaries').addEventListener('click', () => {
-icons.querySelector('.inputCommentandButton').style.display = "block";});
-
-
-return timelineContainer;
-};
+    </div></div>`;*/

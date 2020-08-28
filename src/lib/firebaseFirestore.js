@@ -5,6 +5,7 @@ export const commentPublish = (comment, category, userID) => {
       comment,
       category,
       userID,
+      date: firebase.firestore.Timestamp.fromDate(new Date()),
     });
   } catch (e) {
     console.log(e);
