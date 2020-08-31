@@ -1,6 +1,6 @@
 import { currentUser } from '../lib/firebaseAuth.js';
 import {publish} from './modal.js';
-
+import { loadPost } from '../lib/firebaseFirestore.js';
 export default () => {
 
   let user = currentUser();
@@ -20,11 +20,7 @@ export default () => {
   timelineContainer.appendChild(card);
   const modal = timelineContainer.appendChild(publish(user.photoURL, user.uid));
 
-  data.collectionGroup('userComments').orderBy('date').onSnapshot((querySnapshot)=>{
-    querySnapshot.forEach((doc) => {
-      card.appendChild(printPost(doc.data()));
-    });
-  });
+loadPost(card)
 
 
   newBtn.addEventListener('click', () => {
@@ -59,27 +55,4 @@ function printPost(post){
     </div>
     <div class="desc">
       "La pelicula El Origen tiene una calificación IMDb 8.8/10, pero para mi deberia ser 5/10, ¿Ustedes que opinan?
-    </div></div></div>`;
-
-
-const icons = document.createElement('section')
-icons.setAttribute('class', 'input-comment');
-icons.innerHTML = `<div class="icons"><img src="img/like.png" class="likes" width="20px"/>
-<img src="img/comment.png" class="commentaries" width="20px" ></div>
-<div class="inputCommentandButton">
-<textarea class="inputComment" id="comment" cols="40" rows="2" required placeholder="Escribe tu comentario aquí"></textarea>
-<button type="submit" class="btnCommentaries">Enviar</button>
-</div>`;
-
-
-const comments = document.createElement('section')
-comments.setAttribute('class', 'newsfeed');
-comments.innerHTML = `
-<div class="comments">
-    <div class="content">
-      <div class="detail">
-        </div>
-    </div>
-    <div class="desc">
-    "La pelicula El Origen tiene una calificación IMDb 8.8/10, pero para mi deberia ser 5/10, ¿Ustedes que opinan?
-    </div></div>`;*/
+    </div></div></div>`;*/

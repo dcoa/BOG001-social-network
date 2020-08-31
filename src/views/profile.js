@@ -1,37 +1,13 @@
 import { currentUser } from '../lib/firebaseAuth.js';
+import { deletePost } from '../lib/firebaseFirestore.js';
 
-/*() => {
-  const profile = document.createElement('section');
-  profile.setAttribute('id', 'profileBody');
-  profile.innerHTML = `<div class="comment">
-            <p>Aqui va un comentario</p>
-            <div id="deleteIcon"></div>
-            <div id="confirm">
-            <h2>¿Estás seguro que quieres eliminar la publicación?</h2>
-            <button type="submit" class="btn" id="deleteBtn">ELIMINAR</button>
-            </div>
-            </div>`;
-
-  profile.querySelector('#deleteBtn').addEventListener('submit', ()=>{
-    e.preventDefault();
-  });
-
-  window.addEventListener('click', (e)=>{
-
-    if(e.target == profile.querySelector('#deleteIcon')){
-      profile.querySelector('#confirm').style.display = 'flex';
-    }else{
-      profile.querySelector('#confirm').style.display = 'none';
-    }
-
-  })
-  return profile;
-};*/
 export default () => {
 
+    const profileContainer = document.createElement('div');
     const profile = document.createElement('div');
+    profileContainer.appendChild(profile);
     profile.setAttribute('id', 'profile');
-    profile.innerHTML = `<img src="" id="preview" alt="photoUser" class="photo"/>
+    profile.innerHTML = `<img src="${currentUser().photoURL}" id="preview" alt="photoUser" class="photo"/>
         <div class="default-image"></div>
         <h1>${currentUser().displayName}</h1>
         <input type="file" id="archivo" name="archivo"/>
@@ -64,7 +40,35 @@ export default () => {
           previewPhoto.setAttribute('src', '');
         }
       });
-    return profile;
+
+      const postProfile = document.createElement('section');
+      postProfile.setAttribute('id', 'profileBody');
+      postProfile.innerHTML = `<div class="comment">
+                <p>Aqui va un comentario</p>
+                <div id="deleteIcon"></div>
+                <div id="confirm">
+                <h2>¿Estás seguro que quieres eliminar la publicación?</h2>
+                <button type="submit" class="btn" id="deleteBtn">ELIMINAR</button>
+                </div>
+                </div>`;
+
+    profileContainer.appendChild(postProfile);
+
+    window.addEventListener('click', (e)=>{
+
+      if(e.target == postProfile.querySelector('#deleteIcon')){
+        postProfile.querySelector('#confirm').style.display = 'flex';
+      }else if (e.target == postProfile.querySelector('#deleteBtn')) {
+        e.preventDefault();
+        deletePost();
+        postProfile.querySelector('#confirm').style.display = 'none';
+      }
+      else{
+        postProfile.querySelector('#confirm').style.display = 'none';
+      }
+
+    })
+    return profileContainer;
 };
 
 

@@ -1,6 +1,6 @@
-// aqui exportaras las funciones que necesites
-
-export const myFunction = () => {
-  // aqui tu codigo
-  console.log('Hola mundo!');
+export const printPost = (post) => {
+  let newpost = document.createElement('div');
+  newpost.setAttribute('class', 'card');
+  newpost.innerHTML = post.comment;
+  return newpost;
 };

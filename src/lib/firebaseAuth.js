@@ -9,7 +9,8 @@ export async function signUp(email, password, name, birthday) {
     const newUser = await auth.createUserWithEmailAndPassword(email, password);
     let currentUser = await auth.currentUser;
     currentUser.updateProfile({displayName: name});
-    let userDb = await data.collection('users').doc(currentUser.uid).set({birthday, name: currentUser.displayName, photo: currentUser.photoURL});
+    let userDb = await data.collection('users').doc(currentUser.uid)
+    .set({birthday, name: currentUser.displayName, photo: currentUser.photoURL});
 
     window.location.hash = "#thankAccount";
 
@@ -46,7 +47,8 @@ export async function logInGoogle(provider) {
     const user = userLogIn.user;
     let currentUser = await auth.currentUser;
     currentUser.providerData.forEach(function (profile){
-      data.collection('users').doc(currentUser.uid).set({name: profile.displayName, photo: profile.photoURL});
+      data.collection('users').doc(currentUser.uid)
+      .set({name: profile.displayName, photo: profile.photoURL});
     })
   } catch (error) {
     // Handle Errors here.
