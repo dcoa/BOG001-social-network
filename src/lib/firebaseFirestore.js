@@ -1,9 +1,8 @@
-import {printPost} from './index.js';
+import {printPost} from './printPost.js';
 
 export const commentPublish = (comment, category, userID) => {
   try {
-    var userDocRef = data.collection('users').doc(userID);
-    userDocRef.collection('userComments').doc().set({
+    var userDocRef = data.collection('post').doc().set({
       comment,
       category,
       userID,
@@ -14,14 +13,34 @@ export const commentPublish = (comment, category, userID) => {
   }
 };
 
-export const loadPost = (containerDOM) =>{
+export const loadPost =  async (containerDOM) =>{
   try {
-    data.collectionGroup('userComments').orderBy('date','desc').onSnapshot((querySnapshot) => {
-      containerDOM.innerHTML= '';
-      querySnapshot.forEach((doc) => {
-        containerDOM.appendChild(printPost(doc.data()));
+      await data.collection('post').orderBy('date','desc').onSnapshot((querySnapshot) => {
+        containerDOM.innerHTML= '';
+        querySnapshot.forEach(async (doc) => {
+        let postid = doc.id;
+        let post = doc.data();
+        const user =  await userInfo(post.userID);
+        containerDOM.appendChild(printPost(post, user, postid));
+        });
       });
-    });
+  } catch (e) {
+      console.log(e);
+  }
+};
+
+export const currentUserPost =  async (containerDOM, user) =>{
+  try {
+      await data.collection('post').where("userID", "==", user.uid).orderBy('date','desc')
+      .onSnapshot((querySnapshot) => {
+        containerDOM.innerHTML= '';
+        querySnapshot.forEach(async (doc) => {
+        let postid = doc.id;
+        let post = doc.data();
+        const user =  await userInfo(post.userID);
+        containerDOM.appendChild(printPost(post, user, postid));
+        });
+      });
   } catch (e) {
       console.log(e);
   }
@@ -29,8 +48,16 @@ export const loadPost = (containerDOM) =>{
 
 export const deletePost = async(id) =>{
   try {
-    await data.collectionGroup('userComments').doc(id).dalete();
+    await data.collection('post').doc(id).dalete();
   } catch (e) {
     console.log(e);
   }
+};
+
+const userInfo = async(userID) =>{
+  const user = await data.collection('users').doc(userID).get()
+  .then((doc) => {
+    return doc.data();
+  });
+  return user;
 };

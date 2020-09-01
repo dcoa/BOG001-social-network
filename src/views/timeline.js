@@ -1,6 +1,7 @@
 import { currentUser } from '../lib/firebaseAuth.js';
 import {publish} from './modal.js';
 import { loadPost } from '../lib/firebaseFirestore.js';
+
 export default () => {
 
   let user = currentUser();
@@ -14,13 +15,12 @@ export default () => {
   newBtn.textContent = 'NUEVA PUBLICACIÓN';
 
   const card = document.createElement('section')
-  card.setAttribute('class', 'newsfeed');
 
   timelineContainer.appendChild(newBtn);
   timelineContainer.appendChild(card);
   const modal = timelineContainer.appendChild(publish(user.photoURL, user.uid));
 
-loadPost(card)
+loadPost(card, user)
 
 
   newBtn.addEventListener('click', () => {
@@ -33,14 +33,6 @@ loadPost(card)
 
   return  timelineContainer;
 };
-
-function printPost(post){
-  let newpost = document.createElement('div');
-  newpost.setAttribute('class', 'card');
-  newpost.innerHTML = post.comment;
-
-  return newpost;
-}
 
 /*card.innerHTML = `
    <div class="card">

@@ -1,4 +1,5 @@
 import { currentUser } from '../lib/firebaseAuth.js';
+import { currentUserPost } from '../lib/firebaseFirestore.js';
 import { deletePost } from '../lib/firebaseFirestore.js';
 
 export default () => {
@@ -43,18 +44,11 @@ export default () => {
 
       const postProfile = document.createElement('section');
       postProfile.setAttribute('id', 'profileBody');
-      postProfile.innerHTML = `<div class="comment">
-                <p>Aqui va un comentario</p>
-                <div id="deleteIcon"></div>
-                <div id="confirm">
-                <h2>¿Estás seguro que quieres eliminar la publicación?</h2>
-                <button type="submit" class="btn" id="deleteBtn">ELIMINAR</button>
-                </div>
-                </div>`;
+      currentUserPost(postProfile, currentUser());
 
-    profileContainer.appendChild(postProfile);
+      profileContainer.appendChild(postProfile);
 
-    window.addEventListener('click', (e)=>{
+    /*window.addEventListener('click', (e)=>{
 
       if(e.target == postProfile.querySelector('#deleteIcon')){
         postProfile.querySelector('#confirm').style.display = 'flex';
@@ -67,19 +61,6 @@ export default () => {
         postProfile.querySelector('#confirm').style.display = 'none';
       }
 
-    })
+    })*/
     return profileContainer;
 };
-
-
-/*function mostrarImagen(event){
-    let imagenSource = event.target.result;
-    let previewImage = document.getElementById("preview");
-  }
-  function changePhoto(event){
-    let imagen = event.target.files[0];
-    let lector = new FileReader();
-    lector.addEventListener("load", mostrarImagen,false);
-    lector.readAsDataURL(imagen);
-  }
-document.getElementById("archivo").addEventListener("change", changePhoto,false);*/
