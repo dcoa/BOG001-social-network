@@ -19,7 +19,7 @@ export const loadPost =  async (containerDOM) =>{
         containerDOM.innerHTML= '';
         querySnapshot.forEach(async (doc) => {
         let postid = doc.id;
-        let post = doc.data();
+        let post = await doc.data();
         const user =  await userInfo(post.userID);
         containerDOM.appendChild(printPost(post, user, postid));
         });
@@ -48,7 +48,8 @@ export const currentUserPost =  async (containerDOM, user) =>{
 
 export const deletePost = async(id) =>{
   try {
-    await data.collection('post').doc(id).dalete();
+    await data.collection('post').doc(id).delete();
+    });
   } catch (e) {
     console.log(e);
   }

@@ -1,36 +1,69 @@
+#profileContainer{
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #FFFFF0;
+    background-size:cover;
+    flex-direction: column;
+    font-family: 'Source Sans Pro';
+}
+
 #profile{
-  min-height: 80vh;
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: #FFFFF0;
   background-size:cover;
   flex-direction: column;
+  font-family: 'Source Sans Pro';
+}
+
+#profile >  h2{
+    color: #05ADBA;
+    margin-top:2em;
+    margin-bottom:1em ;
   }
 
+  #editPhoto > input{
+    display: none;
+  }
+
+  #editPhoto img{
+  width: 25px;
+  margin-bottom:1em;
+  cursor: pointer;
+}
+
 #profile h1,h3{
+  margin-bottom:1em;
   font-size: 16px;
   color:black;
   text-align: center;
 }
+#nameUser{
+  text-transform: uppercase;
+}
 
+#mail{
+  color:black;
+  margin-bottom:1em;
+  display: block;
+}
+/* Valores fijos para que siempre sea redonda*/
 #profile .photo{
   border-radius: 50%;
-  max-width: 25%;
+  width: 25%;
+  height: 25%;
   display:inline-block;
   }
-
-
-
-#profileBody{
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  height: 100%;
-  background-color: #FFFFF0;
-  position: relative;
-  padding: 10px
+#profile a{
+  text-decoration: none;
+  color: black;
 }
+
+
 
 .comment{
   min-width: 250px;
@@ -67,6 +100,7 @@
 
 #confirm > h2{
   font-size: 1em;
+  margin: 5px;
 }
 #deleteBtn{
   background-color: #ED3124;

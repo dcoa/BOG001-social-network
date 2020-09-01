@@ -1,63 +1,89 @@
+import { deletePost } from './firebaseFirestore.js';
+
 export const printPost = (post, user, postid) => {
-    const card= document.createElement('section')
-    card.setAttribute('id', postid)
-    card.setAttribute('class', 'newsfeed');
-    card.innerHTML = `<div class="card">
-        <div class="content">
-        <div class="header">
-          <img class="profile-pic" src="${user.photo}"/>
-            <div class="detail">
-            <p class="name">${user.name}</p>
-            <p class="posted">2 hours ago</p>
-          </div>
-          <div class="categories"></div>
-        </div>
-        <div class="desc">
-          ${post.comment}
-        </div></div></div>`;
+  let newpost = document.createElement('div');
+  newpost.setAttribute('id', postid);
+  newpost.setAttribute('class', 'post');
+  newpost.innerHTML = post.comment;
+  newpost.innerHTML = user;
+  newpost.innerHTML = `<div class="card">
+  <div class="content">
+  <div class="header">
+    <div class="profile-pic"><img src="${user.photo}" id="profile-pic"/></div>
+      <div class="detail">
+      <p class="name">${user.name}</p>
+      <p class="posted"></p>
+    </div>
+    <div class="categories"></div>
+  </div>
+  <div class="desc">
+  ${post.comment}
+  </div></div></div>`;
 
 
-    const icons = document.createElement('section')
-    icons.setAttribute('class', 'input-comment');
-    icons.innerHTML = `<div class="icons"><img src="img/delete.png" id="delete" width="20px"/><img src="img/like.png" class="likes" width="20px"/>
+  const icons = document.createElement('section')
+  icons.setAttribute('class', 'input-comment');
+  icons.innerHTML = `<div class="icons">
+    <img src="img/delete.png" id="delete" width="20px""/>
+    <img src="img/edit.png" id="edit" width="20px""/>
+    <img src="img/like.png" id="likes" width="20px"/>
     <img src="img/comment.png" class="commentaries" width="20px""/>
+    </div>
     <div id="confirm">
-    <h2>¿Estás seguro que quieres eliminar la publicación?</h2>
-    <button type="submit" class="btn" id="deleteBtn">ELIMINAR</button>
+      <h2>¿Estás seguro que quieres eliminar la publicación?</h2>
+      <button type="submit" class="btn" id="deleteBtn">ELIMINAR</button>
     </div>
-    </div>
-    <div class="inputCommentandButton">
-    <textarea class="inputComment" id="comment" cols="40" rows="2" required placeholder="Escribe tu comentario aquí"></textarea>
+  <div class="inputCommentandButton">
+    <textarea class="inputComment" id="comment" rows="2" required placeholder="Escribe tu comentario aquí"></textarea>
     <button type="submit" class="btnCommentaries">Enviar</button>
-    </div>`;
-    const deletebtn = icons.querySelector('#delete');
-    if(window.location.hash == '#timeline'){
-      deletebtn.style.display = 'none';
-    }
+  </div>`;
 
-    const comments = document.createElement('section')
-    comments.setAttribute('class', 'newsfeed');
-    comments.innerHTML = `
-    <div class="comments">
-        <div class="content">
-          <div class="detail">
-            </div>
-        </div>
-        <div class="desc">
-        "" </div></div>`;
+  newpost.appendChild(icons);
+  const comments = document.createElement('section')
+  comments.setAttribute('class', 'newsfeed');
+  comments.innerHTML = `
+  <div class="comments">
+      <div class="content">
+        <div class="detail">
+          </div>
+      </div>
+      <div class="desc">
+      "" </div></div>`;
 
-    card.appendChild(icons);
-    card.appendChild(comments);
-
-
-
-    icons.querySelector('.commentaries').addEventListener('click', () => {
-    icons.querySelector('.inputCommentandButton').style.display = "block";
+  if(window.location.hash == '#timeline'){
+    icons.querySelector('#delete').style.display = 'none';
+    icons.querySelector('#edit').style.display = 'none';
+  }
+  //newpost.appendChild(comments);
+  window.addEventListener('click', (e)=>{
+      if(e.target == icons.querySelector('.commentaries')){
+        icons.querySelector('.inputCommentandButton').style.display = 'block';
+        newpost.querySelector('.card').style.display = 'none';
+      }else if (e.target == icons.querySelector('#delete')) {
+        icons.querySelector('#confirm').style.display = 'block';
+      } else if (e.target == icons.querySelector('#deleteBtn')) {
+        let postid = newpost.getAttribute('id');
+        console.log(postid);
+        deletePost(postid);
+      }
+      else{
+        icons.querySelector('.inputCommentandButton').style.display = 'none';
+        newpost.querySelector('.card').style.display = 'block';
+        icons.querySelector('#confirm').style.display = 'none';
+      }
     });
 
 
-    return card;
-  };
+  /*window.addEventListener('click', (e)=>{
+    if(e.target == icons.querySelector('.commentaries')){
+      icons.querySelector('.inputCommentandButton').style.display = 'block';
+    }else{
+      icons.querySelector('.inputCommentandButton').style.display = 'none';
+    });*/
+
+    return newpost;
+};
+
 
   /*<div id="confirm">
   <h2>¿Estás seguro que quieres eliminar la publicación?</h2>
