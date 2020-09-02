@@ -12,22 +12,37 @@ export const printPost = (post, user, postid) => {
     <div class="profile-pic"><img src="${user.photo}" id="profile-pic"/></div>
       <div class="detail">
       <p class="name">${user.name}</p>
-      <p class="posted"></p>
+      <p class="posted">${post.date.toDate().toDateString()}</p>
     </div>
-    <div class="categories"></div>
+    <img class="categories">
   </div>
   <div class="desc">
   ${post.comment}
   </div></div></div>`;
 
+  let categoryIcon = newpost.querySelector('.categories');
+  switch (post.category) {
+    case 'Movie':
+      categoryIcon.src = 'img/movie.png';
+      break;
+    case 'Documentary':
+      categoryIcon.src = 'img/documentary.png';
+      break;
+    case 'Serie':
+      categoryIcon.src = 'img/serie.png';
+      break;
+  }
+
 
   const icons = document.createElement('section')
   icons.setAttribute('class', 'input-comment');
-  icons.innerHTML = `<div class="icons">
-    <img src="img/delete.png" id="delete" width="20px""/>
-    <img src="img/edit.png" id="edit" width="20px""/>
-    <img src="img/like.png" id="likes" width="20px"/>
-    <img src="img/comment.png" class="commentaries" width="20px""/>
+  icons.innerHTML = `<div id="icons">
+    <img src="img/delete.png" id="delete" class="icons"/>
+    <img src="img/edit.png" id="edit" class="icons"/>
+    <img src="img/like.png" id="likes" class="icons"/>
+    <span>00000</span>
+    <img src="img/comment.png" class="commentaries icons"/>
+    <span>00000</span>
     </div>
     <div id="confirm">
       <h2>¿Estás seguro que quieres eliminar la publicación?</h2>

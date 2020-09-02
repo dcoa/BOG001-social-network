@@ -75,7 +75,6 @@
 #deleteIcon{
   width: 30px;
   height: 30px;
-  background-image: url(../img/delete.png);
   background-position: center;
   cursor: pointer;
 }

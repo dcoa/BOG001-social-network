@@ -15,12 +15,13 @@ export const commentPublish = (comment, category, userID) => {
 
 export const loadPost =  async (containerDOM) =>{
   try {
+    let users = await userInfo();
       await data.collection('post').orderBy('date','desc').onSnapshot((querySnapshot) => {
         containerDOM.innerHTML= '';
-        querySnapshot.forEach(async (doc) => {
+        querySnapshot.forEach( (doc) => {
         let postid = doc.id;
-        let post = await doc.data();
-        const user =  await userInfo(post.userID);
+        let post =  doc.data();
+        const user =  users.find((user) => user.id === post.userID);
         containerDOM.appendChild(printPost(post, user, postid));
         });
       });
@@ -29,15 +30,18 @@ export const loadPost =  async (containerDOM) =>{
   }
 };
 
-export const currentUserPost =  async (containerDOM, user) =>{
+export const currentUserPost =  async (containerDOM, currentUser) =>{
   try {
-      await data.collection('post').where("userID", "==", user.uid).orderBy('date','desc')
+      let user = {
+        name: currentUser.displayName,
+        photo: currentUser.photoURL
+      }
+      await data.collection('post').where("userID", "==", currentUser.uid).orderBy('date','desc')
       .onSnapshot((querySnapshot) => {
         containerDOM.innerHTML= '';
         querySnapshot.forEach(async (doc) => {
         let postid = doc.id;
         let post = doc.data();
-        const user =  await userInfo(post.userID);
         containerDOM.appendChild(printPost(post, user, postid));
         });
       });
@@ -49,16 +53,17 @@ export const currentUserPost =  async (containerDOM, user) =>{
 export const deletePost = async(id) =>{
   try {
     await data.collection('post').doc(id).delete();
-    });
   } catch (e) {
     console.log(e);
   }
 };
 
-const userInfo = async(userID) =>{
-  const user = await data.collection('users').doc(userID).get()
-  .then((doc) => {
-    return doc.data();
-  });
-  return user;
+const userInfo = async() =>{
+  const users = []
+  await data.collection('users').get().then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+            users.push({id: doc.id, name: doc.data().name, photo: doc.data().photo});
+        });
+      });
+  return users;
 };
