@@ -6,7 +6,7 @@
     background-color: #FFFFF0;
     background-size:cover;
     flex-direction: column;
-    font-family: 'Source Sans Pro';
+    font-family: 'Source Sans Pro', sans-serif;
 }
 
 #profile{
@@ -17,7 +17,7 @@
   background-color: #FFFFF0;
   background-size:cover;
   flex-direction: column;
-  font-family: 'Source Sans Pro';
+  font-family: 'Source Sans Pro', sans-serif;
 }
 
 #profile >  h2{
