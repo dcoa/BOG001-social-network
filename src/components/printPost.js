@@ -1,11 +1,9 @@
-import { deletePost } from './firebaseFirestore.js';
+import { deletePost } from '../lib/firebaseFirestore.js';
 
 export const printPost = (post, user, postid) => {
   let newpost = document.createElement('div');
   newpost.setAttribute('id', postid);
   newpost.setAttribute('class', 'post');
-  newpost.innerHTML = post.comment;
-  newpost.innerHTML = user;
   newpost.innerHTML = `<div class="card">
   <div class="content">
   <div class="header">
@@ -74,11 +72,12 @@ export const printPost = (post, user, postid) => {
       if(e.target == icons.querySelector('.commentaries')){
         icons.querySelector('.inputCommentandButton').style.display = 'block';
         newpost.querySelector('.card').style.display = 'none';
-      }else if (e.target == icons.querySelector('#delete')) {
+      }
+      else if (e.target == icons.querySelector('#delete')) {
         icons.querySelector('#confirm').style.display = 'block';
-      } else if (e.target == icons.querySelector('#deleteBtn')) {
+      }
+      else if (e.target == icons.querySelector('#deleteBtn')) {
         let postid = newpost.getAttribute('id');
-        console.log(postid);
         deletePost(postid);
       }
       else{

@@ -1,5 +1,5 @@
 import { currentUser } from '../lib/firebaseAuth.js';
-import {publish} from './modal.js';
+import {publish} from '../components/modal.js';
 import { loadPost } from '../lib/firebaseFirestore.js';
 
 export default () => {
