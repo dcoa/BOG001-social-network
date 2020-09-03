@@ -26,6 +26,7 @@ export const loadPost =  async (containerDOM) =>{
         });
       });
   } catch (e) {
+    containerDOM.innerHTML = 'Se ha producido un error intenta recargar la página';
       console.log(e);
   }
 };
@@ -46,6 +47,7 @@ export const currentUserPost =  async (containerDOM, currentUser) =>{
         });
       });
   } catch (e) {
+      containerDOM.innerHTML = 'Se ha producido un error intenta recargar la página';
       console.log(e);
   }
 };
