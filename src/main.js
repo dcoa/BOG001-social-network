@@ -7,7 +7,7 @@ import recover from './views/recover.js';
 import otherThank from './views/thankAccount.js';
 import timeline from './views/timeline.js';
 import profile from './views/profile.js';
-
+import v404 from './views/404.js';
 
 const body = document.getElementById('root');
 const header = document.getElementById('header');
@@ -47,6 +47,8 @@ const router = (rute) => {
       return body.appendChild(profile());
       break;
     default:
+      window.location.hash = '#404'
+      return body.appendChild(v404());
   }
 };
 
