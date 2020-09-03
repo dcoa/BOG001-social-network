@@ -35,7 +35,6 @@ export default () => {
     const birthday = form.birthday.value;
     signUp(email, password, nameUser, birthday);
     window.location.hash = '#thankAccount';
-
   });
 
   return createAccount;

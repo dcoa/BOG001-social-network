@@ -7,9 +7,9 @@ export default () => {
       <h1>Gracias por crear una cuenta</h1>
       <button id="continue" class="btn">CONTINUAR</button>`;
 
-      otherThank.addEventListener('click', () => {
-        window.location = '#timeline';
-      });
+  otherThank.addEventListener('click', () => {
+    window.location = '#timeline';
+  });
   otherThank.appendChild(accountThank);
   return otherThank;
 };

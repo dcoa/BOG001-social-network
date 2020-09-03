@@ -1,21 +1,20 @@
 // createAccount
-export  function currentUser() {
-    const user =  auth.currentUser;
-    return user;
+export function currentUser() {
+  const user = auth.currentUser;
+  return user;
 }
 
 export async function signUp(email, password, name, birthday) {
   try {
     const newUser = await auth.createUserWithEmailAndPassword(email, password);
-    let currentUser = await auth.currentUser;
-    currentUser.updateProfile({displayName: name});
-    let userDb = await data.collection('users').doc(currentUser.uid)
-    .set({birthday, name, photo: currentUser.photoURL});
+    const currentUser = await auth.currentUser;
+    currentUser.updateProfile({ displayName: name });
+    const userDb = await data.collection('users').doc(currentUser.uid)
+      .set({ birthday, name, photo: currentUser.photoURL });
 
-    window.location.hash = "#thankAccount";
+    window.location.hash = '#thankAccount';
 
     return newUser;
-
   } catch (error) {
     // Handle Errors here.
     const errorCode = error.code;
@@ -45,11 +44,11 @@ export async function logInGoogle(provider) {
     const token = userLogIn.credential.accessToken;
     // The signed-in user info.
     const user = userLogIn.user;
-    let currentUser = await auth.currentUser;
-    currentUser.providerData.forEach(function (profile){
+    const currentUser = await auth.currentUser;
+    currentUser.providerData.forEach((profile) => {
       data.collection('users').doc(currentUser.uid)
-      .set({name: profile.displayName, photo: profile.photoURL});
-    })
+        .set({ name: profile.displayName, photo: profile.photoURL });
+    });
   } catch (error) {
     // Handle Errors here.
     const errorCode = error.code;

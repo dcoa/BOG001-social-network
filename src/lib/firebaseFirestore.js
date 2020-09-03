@@ -1,8 +1,8 @@
-import {printPost} from '../components/printPost.js';
+import printPost from '../components/printPost.js';
 
 export const commentPublish = (comment, category, userID) => {
   try {
-    var userDocRef = data.collection('post').doc().set({
+    const userDocRef = data.collection('post').doc().set({
       comment,
       category,
       userID,
@@ -13,46 +13,46 @@ export const commentPublish = (comment, category, userID) => {
   }
 };
 
-export const loadPost =  async (containerDOM) =>{
+export const loadPost = async (containerDOM) => {
   try {
-    let users = await userInfo();
-      await data.collection('post').orderBy('date','desc').onSnapshot((querySnapshot) => {
-        containerDOM.innerHTML= '';
-        querySnapshot.forEach( (doc) => {
-        let postid = doc.id;
-        let post =  doc.data();
-        const user =  users.find((user) => user.id === post.userID);
+    const users = await userInfo();
+    await data.collection('post').orderBy('date', 'desc').onSnapshot((querySnapshot) => {
+      containerDOM.innerHTML = '';
+      querySnapshot.forEach((doc) => {
+        const postid = doc.id;
+        const post = doc.data();
+        const user = users.find(user => user.id === post.userID);
         containerDOM.appendChild(printPost(post, user, postid));
+      });
+    });
+  } catch (e) {
+    containerDOM.innerHTML = 'Se ha producido un error intenta recargar la página';
+    console.log(e);
+  }
+};
+
+export const currentUserPost = async (containerDOM, currentUser) => {
+  try {
+    const user = {
+      name: currentUser.displayName,
+      photo: currentUser.photoURL,
+    };
+    await data.collection('post').where('userID', '==', currentUser.uid).orderBy('date', 'desc')
+      .onSnapshot((querySnapshot) => {
+        containerDOM.innerHTML = '';
+        querySnapshot.forEach(async (doc) => {
+          const postid = doc.id;
+          const post = doc.data();
+          containerDOM.appendChild(printPost(post, user, postid));
         });
       });
   } catch (e) {
     containerDOM.innerHTML = 'Se ha producido un error intenta recargar la página';
-      console.log(e);
+    console.log(e);
   }
 };
 
-export const currentUserPost =  async (containerDOM, currentUser) =>{
-  try {
-      let user = {
-        name: currentUser.displayName,
-        photo: currentUser.photoURL
-      }
-      await data.collection('post').where("userID", "==", currentUser.uid).orderBy('date','desc')
-      .onSnapshot((querySnapshot) => {
-        containerDOM.innerHTML= '';
-        querySnapshot.forEach(async (doc) => {
-        let postid = doc.id;
-        let post = doc.data();
-        containerDOM.appendChild(printPost(post, user, postid));
-        });
-      });
-  } catch (e) {
-      containerDOM.innerHTML = 'Se ha producido un error intenta recargar la página';
-      console.log(e);
-  }
-};
-
-export const deletePost = async(id) =>{
+export const deletePost = async (id) => {
   try {
     await data.collection('post').doc(id).delete();
   } catch (e) {
@@ -60,12 +60,12 @@ export const deletePost = async(id) =>{
   }
 };
 
-const userInfo = async() =>{
-  const users = []
+const userInfo = async () => {
+  const users = [];
   await data.collection('users').get().then((querySnapshot) => {
-        querySnapshot.forEach((doc) => {
-            users.push({id: doc.id, name: doc.data().name, photo: doc.data().photo});
-        });
-      });
+    querySnapshot.forEach((doc) => {
+      users.push({ id: doc.id, name: doc.data().name, photo: doc.data().photo });
+    });
+  });
   return users;
 };

@@ -47,16 +47,16 @@ const router = (rute) => {
       return body.appendChild(profile());
       break;
     default:
-      window.location.hash = '#404'
+      window.location.hash = '#404';
       return body.appendChild(v404());
   }
 };
 
 window.addEventListener('hashchange', () => {
   router(window.location.hash);
-  if(window.location.hash == '#timeline' || window.location.hash =='#profile'){
+  if (window.location.hash === '#timeline' || window.location.hash === '#profile') {
     header.style.display = 'block';
-  }else{
+  } else {
     header.style.display = 'none';
   }
 });
