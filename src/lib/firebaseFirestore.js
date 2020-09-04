@@ -7,6 +7,7 @@ export const commentPublish = (comment, category, userID) => {
       category,
       userID,
       date: firebase.firestore.Timestamp.fromDate(new Date()),
+      likes: [],
     });
   } catch (e) {
     console.log(e);
@@ -69,3 +70,17 @@ const userInfo = async () => {
   });
   return users;
 };
+
+// coloca y quita los likes.
+export async function likePost(currentUserId, postId, pushLike) {
+  const postRef = data.collection('post').doc(postId);
+  if (pushLike) {
+    postRef.update({
+      likes: firebase.firestore.FieldValue.arrayRemove(currentUserId),
+    });
+  } else {
+    postRef.update({
+      likes: firebase.firestore.FieldValue.arrayUnion(currentUserId),
+    });
+  }
+}

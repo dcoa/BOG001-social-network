@@ -1,4 +1,6 @@
-import { deletePost } from '../lib/firebaseFirestore.js';
+
+import { deletePost, likePost } from '../lib/firebaseFirestore.js';
+import { currentUser } from '../lib/firebaseAuth.js';
 
 export default (post, user, postid) => {
   const newpost = document.createElement('div');
@@ -17,6 +19,10 @@ export default (post, user, postid) => {
   <div class="desc">
   ${post.comment}
   </div></div></div>`;
+
+  //Toma el id del usuario logueado y valida y está dentro del arreglo de likes
+  let userid = currentUser();
+  let pushLike = post.likes.some(likes => likes === userid.uid);
 
   const categoryIcon = newpost.querySelector('.categories');
   switch (post.category) {
@@ -37,8 +43,8 @@ export default (post, user, postid) => {
   icons.innerHTML = `<div id="icons">
     <img src="img/delete.png" id="delete" class="icons"/>
     <img src="img/edit.png" id="edit" class="icons"/>
-    <img src="img/like.png" id="likes" class="icons"/>
-    <span>00000</span>
+    <img src="${pushLike ? "img/like.png" :"img/dislike.png" }" id="likes" class="icons"/>
+    <span>${post.likes.length}</span>
     <img src="img/comment.png" class="commentaries icons"/>
     <span>00000</span>
     </div>
@@ -85,18 +91,16 @@ export default (post, user, postid) => {
   });
 
 
-  /* window.addEventListener('click', (e)=>{
-    if(e.target == icons.querySelector('.commentaries')){
-      icons.querySelector('.inputCommentandButton').style.display = 'block';
-    }else{
-      icons.querySelector('.inputCommentandButton').style.display = 'none';
-    }); */
+  //like activo inactivo
+  const btnlike = icons.querySelector('#likes');
+  btnlike.addEventListener('click', () => {
+    likePost(userid.uid, postid, pushLike);
+    if (pushLike) {
+      pushLike = false;
+    } else {
+      pushLike = true;
+    }
+  });
 
   return newpost;
 };
-
-
-/* <div id="confirm">
-  <h2>¿Estás seguro que quieres eliminar la publicación?</h2>
-  <button type="submit" class="btn" id="deleteBtn">ELIMINAR</button>
-  </div> */
