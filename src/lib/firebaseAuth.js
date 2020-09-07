@@ -8,9 +8,11 @@ export async function signUp(email, password, name, birthday) {
   try {
     const newUser = await auth.createUserWithEmailAndPassword(email, password);
     const currentUser = await auth.currentUser;
-    currentUser.updateProfile({ displayName: name });
+    await currentUser.updateProfile({
+      displayName: name,
+      photoURL: 'https://www.nicepng.com/png/detail/202-2022264_usuario-annimo-usuario-annimo-user-icon-png-transparent.png' });
     const userDb = await data.collection('users').doc(currentUser.uid)
-      .set({ birthday, name, photo: currentUser.photoURL });
+      .set({ birthday, name, photo: currentUser.photoURL, biography: 'Cuéntanos algo sobre tí'});
 
     window.location.hash = '#thankAccount';
 
@@ -47,7 +49,7 @@ export async function logInGoogle(provider) {
     const currentUser = await auth.currentUser;
     currentUser.providerData.forEach((profile) => {
       data.collection('users').doc(currentUser.uid)
-        .set({ name: profile.displayName, photo: profile.photoURL });
+        .set({ name: profile.displayName, photo: profile.photoURL, biography: 'Cuéntanos algo sobre tí'});
     });
   } catch (error) {
     // Handle Errors here.

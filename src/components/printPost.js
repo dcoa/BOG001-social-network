@@ -1,5 +1,5 @@
 
-import { deletePost, likePost } from '../lib/firebaseFirestore.js';
+import { deletePost, likePost, updateDataField } from '../lib/firebaseFirestore.js';
 import { currentUser } from '../lib/firebaseAuth.js';
 
 export default (post, user, postid) => {
@@ -16,9 +16,11 @@ export default (post, user, postid) => {
     </div>
     <img class="categories">
   </div>
-  <div class="desc">
+  <div id="post" class="desc" contenteditable="false">
   ${post.comment}
-  </div></div></div>`;
+  </div>
+  <button type="submit" class="btn update" style="display:none">GUARDAR</button>
+  </div></div>`;
 
   //Toma el id del usuario logueado y valida y está dentro del arreglo de likes
   let userid = currentUser();
@@ -54,20 +56,12 @@ export default (post, user, postid) => {
     </div>
   <div class="inputCommentandButton">
     <textarea class="inputComment" id="comment" rows="2" required placeholder="Escribe tu comentario aquí"></textarea>
-    <button type="submit" class="btnCommentaries">Enviar</button>
+    <button type="button" class="btnCommentaries">Enviar</button>
   </div>`;
 
   newpost.appendChild(icons);
-  const comments = document.createElement('section');
-  comments.setAttribute('class', 'newsfeed');
-  comments.innerHTML = `
-  <div class="comments">
-      <div class="content">
-        <div class="detail">
-          </div>
-      </div>
-      <div class="desc">
-      "" </div></div>`;
+
+let postId = newpost.getAttribute('id');
 
   if (window.location.hash === '#timeline') {
     icons.querySelector('#delete').style.display = 'none';
@@ -81,7 +75,6 @@ export default (post, user, postid) => {
     } else if (e.target === icons.querySelector('#delete')) {
       icons.querySelector('#confirm').style.display = 'block';
     } else if (e.target === icons.querySelector('#deleteBtn')) {
-      const postId = newpost.getAttribute('id');
       deletePost(postId);
     } else {
       icons.querySelector('.inputCommentandButton').style.display = 'none';
@@ -102,5 +95,36 @@ export default (post, user, postid) => {
     }
   });
 
+
+ let editPost = newpost.querySelector('#post');
+ const btnEdit = icons.querySelector('#edit');
+ const btnUpdate = newpost.querySelector('.update');
+
+ btnEdit.addEventListener ('click', () => {
+   btnUpdate.style.display = 'block';
+   editPost.contentEditable = true;
+   editPost.style.background = "#FFFFFF";
+   console.log(editPost.innerHTML);
+ });
+
+btnUpdate.addEventListener('click', () => {
+  updateDataField('post', postId, {comment: editPost.innerHTML})
+  console.log(postId, editPost.innerHTML);
+  editPost.contentEditable = false;
+  editPost.style.background = "#DADADA";
+  btnUpdate.style.display = 'none';
+});
+
   return newpost;
 };
+
+/*const comments = document.createElement('section');
+comments.setAttribute('class', 'newsfeed');
+comments.innerHTML = `
+<div class="comments">
+    <div class="content">
+      <div class="detail">
+        </div>
+    </div>
+    <div class="desc">
+    "" </div></div>`;*/

@@ -1,8 +1,10 @@
 import { currentUser } from '../lib/firebaseAuth.js';
-import { currentUserPost, deletePost } from '../lib/firebaseFirestore.js';
+import { currentUserPost, deletePost, updateDataField, updateBiography } from '../lib/firebaseFirestore.js';
+
 
 
 export default () => {
+
   const profileContainer = document.createElement('div');
   profileContainer.setAttribute('id', 'profileContainer');
   const profile = document.createElement('div');
@@ -23,15 +25,23 @@ export default () => {
             </li>
         </ul>
         <h3>Sobre mi</h3>
-        <input type="text" id="biography" class="aboutMe" placeholder="Cuéntanos de ti">
-        <button type="submit" class="btn update" id="btnUp" >ACTUALIZAR</button>
+        <div id="biographyid" contenteditable="false" class="biography">Escribe algo sobre ti</div>
+        <img src="img/edit.png" alt ="Edita sobre ti" id="userEdit">
+        <button type="submit" class="btn update" id="btnUp">ACTUALIZAR</button>
         <h2 id="publication">Mis publicaciones</h2>`;
 
   const photos = profile.querySelector('#archivo');
   const previewPhoto = profile.querySelector('#preview');
   const defaultImage = profile.querySelector('.default-image');
   const btnUpdate = profile.querySelector('#btnUp');
+   const saveBtn = profile.querySelector('#userEdit');
+  let biography = profile.querySelector('#biographyid');
   let currentFile = '';
+  updateBiography(currentUser().uid,biography);
+
+  saveBtn.addEventListener ('click', () => {
+      biography.contentEditable = true;
+    });
 
   photos.addEventListener('change', () => {
     currentFile = photos.files[0];
@@ -54,8 +64,8 @@ export default () => {
   btnUpdate.addEventListener('click', () => {
     const file = currentFile;
     console.log(file);
-    /* const valueChange = document.getElementById('biography').value;
-      valueChange.innerHTML= `${valueChange}` */
+    updateDataField('users',currentUser().uid,{biography:biography.innerHTML})
+    biography.contentEditable = false;
     if (!file) {
       console.log('No existe archivo para cambiar la imagen!');
     } else {
@@ -64,6 +74,7 @@ export default () => {
       task.on('state_changed', (snapshot) => {
         task.snapshot.ref.getDownloadURL().then((downloadURL) => {
           currentUser().updateProfile({ photoURL: downloadURL });
+          updateDataField('users',currentUser().uid, { photo: downloadURL})
           console.log('File available at', downloadURL);
         });
       }, (error) => {
