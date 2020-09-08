@@ -1,5 +1,4 @@
 // importamos la funciones firebase.auth que vamos a testear
-import MockFirebase from 'mock-cloud-firestore';
 import authmock from '../_mocks_/mock_auth.js';
 
 import {

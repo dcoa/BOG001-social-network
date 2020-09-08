@@ -22,8 +22,8 @@ export default (post, user, postid) => {
   <button type="submit" class="btn update" style="display:none">GUARDAR</button>
   </div></div>`;
 
-  //Toma el id del usuario logueado y valida y está dentro del arreglo de likes
-  let userid = currentUser();
+  // Toma el id del usuario logueado y valida y está dentro del arreglo de likes
+  const userid = currentUser();
   let pushLike = post.likes.some(likes => likes === userid.uid);
 
   const categoryIcon = newpost.querySelector('.categories');
@@ -45,7 +45,7 @@ export default (post, user, postid) => {
   icons.innerHTML = `<div id="icons">
     <img src="img/delete.png" id="delete" class="icons"/>
     <img src="img/edit.png" id="edit" class="icons"/>
-    <img src="${pushLike ? "img/like.png" :"img/dislike.png" }" id="likes" class="icons"/>
+    <img src="${pushLike ? 'img/like.png' : 'img/dislike.png'}" id="likes" class="icons"/>
     <span>${post.likes.length}</span>
     <img src="img/comment.png" class="commentaries icons"/>
     <span>00000</span>
@@ -61,7 +61,7 @@ export default (post, user, postid) => {
 
   newpost.appendChild(icons);
 
-let postId = newpost.getAttribute('id');
+  const postId = newpost.getAttribute('id');
 
   if (window.location.hash === '#timeline') {
     icons.querySelector('#delete').style.display = 'none';
@@ -84,7 +84,7 @@ let postId = newpost.getAttribute('id');
   });
 
 
-  //like activo inactivo
+  // like activo inactivo
   const btnlike = icons.querySelector('#likes');
   btnlike.addEventListener('click', () => {
     likePost(userid.uid, postid, pushLike);
@@ -96,29 +96,29 @@ let postId = newpost.getAttribute('id');
   });
 
 
- let editPost = newpost.querySelector('#post');
- const btnEdit = icons.querySelector('#edit');
- const btnUpdate = newpost.querySelector('.update');
+  const editPost = newpost.querySelector('#post');
+  const btnEdit = icons.querySelector('#edit');
+  const btnUpdate = newpost.querySelector('.update');
 
- btnEdit.addEventListener ('click', () => {
-   btnUpdate.style.display = 'block';
-   editPost.contentEditable = true;
-   editPost.style.background = "#FFFFFF";
-   console.log(editPost.innerHTML);
- });
+  btnEdit.addEventListener('click', () => {
+    btnUpdate.style.display = 'block';
+    editPost.contentEditable = true;
+    editPost.style.background = '#FFFFFF';
+    console.log(editPost.innerHTML);
+  });
 
-btnUpdate.addEventListener('click', () => {
-  updateDataField('post', postId, {comment: editPost.innerHTML})
-  console.log(postId, editPost.innerHTML);
-  editPost.contentEditable = false;
-  editPost.style.background = "#DADADA";
-  btnUpdate.style.display = 'none';
-});
+  btnUpdate.addEventListener('click', () => {
+    updateDataField('post', postId, { comment: editPost.innerHTML });
+    console.log(postId, editPost.innerHTML);
+    editPost.contentEditable = false;
+    editPost.style.background = '#DADADA';
+    btnUpdate.style.display = 'none';
+  });
 
   return newpost;
 };
 
-/*const comments = document.createElement('section');
+/* const comments = document.createElement('section');
 comments.setAttribute('class', 'newsfeed');
 comments.innerHTML = `
 <div class="comments">
@@ -127,4 +127,4 @@ comments.innerHTML = `
         </div>
     </div>
     <div class="desc">
-    "" </div></div>`;*/
+    "" </div></div>`; */

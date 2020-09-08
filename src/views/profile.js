@@ -1,10 +1,11 @@
 import { currentUser } from '../lib/firebaseAuth.js';
-import { currentUserPost, deletePost, updateDataField, updateBiography } from '../lib/firebaseFirestore.js';
+import {
+  currentUserPost, deletePost, updateDataField, updateBiography,
+} from '../lib/firebaseFirestore.js';
 import printPost from '../components/printPost.js';
 
 
 export default () => {
-
   const profileContainer = document.createElement('div');
   profileContainer.setAttribute('id', 'profileContainer');
   const profile = document.createElement('div');
@@ -34,14 +35,14 @@ export default () => {
   const previewPhoto = profile.querySelector('#preview');
   const defaultImage = profile.querySelector('.default-image');
   const btnUpdate = profile.querySelector('#btnUp');
-   const saveBtn = profile.querySelector('#userEdit');
-  let biography = profile.querySelector('#biographyid');
+  const saveBtn = profile.querySelector('#userEdit');
+  const biography = profile.querySelector('#biographyid');
   let currentFile = '';
-  updateBiography(currentUser().uid,biography);
+  updateBiography(currentUser().uid, biography);
 
-  saveBtn.addEventListener ('click', () => {
-      biography.contentEditable = true;
-    });
+  saveBtn.addEventListener('click', () => {
+    biography.contentEditable = true;
+  });
 
   photos.addEventListener('change', () => {
     currentFile = photos.files[0];
@@ -64,7 +65,7 @@ export default () => {
   btnUpdate.addEventListener('click', () => {
     const file = currentFile;
     console.log(file);
-    updateDataField('users',currentUser().uid,{biography:biography.innerHTML})
+    updateDataField('users', currentUser().uid, { biography: biography.innerHTML });
     biography.contentEditable = false;
     if (!file) {
       console.log('No existe archivo para cambiar la imagen!');
@@ -74,7 +75,7 @@ export default () => {
       task.on('state_changed', (snapshot) => {
         task.snapshot.ref.getDownloadURL().then((downloadURL) => {
           currentUser().updateProfile({ photoURL: downloadURL });
-          updateDataField('users',currentUser().uid, { photo: downloadURL})
+          updateDataField('users', currentUser().uid, { photo: downloadURL });
           console.log('File available at', downloadURL);
         });
       }, (error) => {

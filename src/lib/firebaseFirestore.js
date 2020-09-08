@@ -64,33 +64,35 @@ export const userInfo = async () => {
   const users = [];
   await data.collection('users').get().then((querySnapshot) => {
     querySnapshot.forEach((doc) => {
-      users.push({ id: doc.id,
+      users.push({
+        id: doc.id,
         name: doc.data().name,
         photo: doc.data().photo,
-        biography: doc.data().biography});
+        biography: doc.data().biography,
+      });
     });
   });
   return users;
 };
 
-export const updateDataField = async(collectionName, id, field) => {
-    try{
-      await data.collection(collectionName).doc(id).update(field);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+export const updateDataField = async (collectionName, id, field) => {
+  try {
+    await data.collection(collectionName).doc(id).update(field);
+  } catch (error) {
+    console.log(error);
+  }
+};
 
-export const updateBiography = async(id,containerBio) =>{
- try{
-   await data.collection('users').doc(id).onSnapshot((querySnapshot) => {
-     let user = querySnapshot.data();
-     containerBio.innerHTML = user.biography;
-     console.log(user);
-     });
- } catch (error) {
-   console.log(error);
- }
+export const updateBiography = async (id, containerBio) => {
+  try {
+    await data.collection('users').doc(id).onSnapshot((querySnapshot) => {
+      const user = querySnapshot.data();
+      containerBio.innerHTML = user.biography;
+      console.log(user);
+    });
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 // coloca y quita los likes.
