@@ -1,6 +1,6 @@
 # Creando una Red Social
 
-## HELIVISUEL 🍿
+## HELIVISUEL
 
 <img src="src/img/Banner.png">
 
@@ -11,7 +11,7 @@
 * [3. Prototipos](#3-prototipos)
 * [4. Test de usabilidad](#4-Test-de-usabilidad)
 * [5. Objetivos de aprendizaje](#5-objetivos-de-aprendizaje)
-
+* [6. Objetivos de aprendizaje](#6-autores)
 
 
 ## 1. DEFINICIÓN DEL PRODUCTO
@@ -46,15 +46,22 @@ Prototipos de baja fidelidad
 
 Prototipos de alta fidelidad
 
-Movil: https://www.figma.com/proto/vVV1qI2KgMuUCAKSVx8nxJ/Prototyping-in-Figma?node-id=31%3A492&scaling=scale-down
+Movil: [Figma Mobile](https://www.figma.com/proto/vVV1qI2KgMuUCAKSVx8nxJ/Prototyping-in-Figma?node-id=31%3A492&scaling=scale-down)
 
-Desktop: https://www.figma.com/proto/vVV1qI2KgMuUCAKSVx8nxJ/Prototyping-in-Figma?node-id=51%3A79&scaling=min-zoom
+Desktop: [Figma Desktop](https://www.figma.com/proto/vVV1qI2KgMuUCAKSVx8nxJ/Prototyping-in-Figma?node-id=51%3A79&scaling=min-zoom)
 
-Tablet: https://www.figma.com/proto/vVV1qI2KgMuUCAKSVx8nxJ/Prototyping-in-Figma?node-id=77%3A180&scaling=scale-down
+Tablet: [Figma Tablet](https://www.figma.com/proto/vVV1qI2KgMuUCAKSVx8nxJ/Prototyping-in-Figma?node-id=77%3A180&scaling=scale-down)
 
 Paleta de colores
 
 <img src="prototipos/alta/AdobeColor-My%20Color%20Theme%20(1).jpeg" width=400>
+
+Herramientas de apoyo
+
+[Figma](https://www.figma.com/) - Prototipado
+[Flaticon](https://www.flaticon.com/) - Iconos
+[Unsplash](https://unsplash.com/) - Imágenes
+[Content Reel](https://contentreel.design/) - Avatar
 
 ## 4. TEST DE USABILIDAD
 
@@ -67,36 +74,34 @@ El usuario interactua con la pagina de la siguiente manera:
 
 ## 5. OBJETIVOS DE APRENDIZAJE
 
-
-
 ### HTML y CSS
 
-* [ ] [Uso de HTML semántico.](https://developer.mozilla.org/en-US/docs/Glossary/Semantics#Semantics_in_HTML)
-* [ ] Uso de selectores de CSS.
-* [ ] Construir tu aplicación respetando el diseño realizado (maquetación).
-* [ ] [Uso de flexbox en CSS.](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)
+* [x] [Uso de HTML semántico.](https://developer.mozilla.org/en-US/docs/Glossary/Semantics#Semantics_in_HTML)
+* [x] Uso de selectores de CSS.
+* [x] Construir tu aplicación respetando el diseño realizado (maquetación).
+* [x] [Uso de flexbox en CSS.](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)
 
 ### DOM y Web APIs
 
-* [ ] Uso de selectores del DOM.
-* [ ] Manejo de eventos del DOM.
-* [ ] [Manipulación dinámica del DOM.](https://developer.mozilla.org/es/docs/Referencia_DOM_de_Gecko/Introducci%C3%B3n)
+* [x] Uso de selectores del DOM.
+* [x] Manejo de eventos del DOM.
+* [x] [Manipulación dinámica del DOM.](https://developer.mozilla.org/es/docs/Referencia_DOM_de_Gecko/Introducci%C3%B3n)
 (appendChild |createElement | createTextNode| innerHTML | textContent | etc.)
 * [ ] [History API.](https://developer.mozilla.org/es/docs/DOM/Manipulando_el_historial_del_navegador)
 * [ ] [localStorage.](https://developer.mozilla.org/es/docs/Web/API/Window/localStorage)
 
 ### JavaScript
 
-* [ ] Uso de condicionales (if-else | switch | operador ternario)
-* [ ] Uso de funciones (parámetros | argumentos | valor de retorno)
-* [ ] Manipular arrays (filter | map | sort | reduce)
+* [x] Uso de condicionales (if-else | switch | operador ternario)
+* [x] Uso de funciones (parámetros | argumentos | valor de retorno)
+* [x] Manipular arrays (filter | map | sort | reduce)
 * [ ] Manipular objects (key | value)
-* [ ] Uso ES modules ([`import`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import)
+* [x] Uso ES modules ([`import`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import)
 | [`export`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/export))
-* [ ] Diferenciar entre expression y statements.
-* [ ] Diferenciar entre tipos de datos primitivos y no primitivos.
-* [ ] [Uso de callbacks.](https://developer.mozilla.org/es/docs/Glossary/Callback_function)
-* [ ] [Consumo de Promesas.](https://scotch.io/tutorials/javascript-promises-for-dummies#toc-consuming-promises)
+* [x] Diferenciar entre expression y statements.
+* [x] Diferenciar entre tipos de datos primitivos y no primitivos.
+* [x] [Uso de callbacks.](https://developer.mozilla.org/es/docs/Glossary/Callback_function)
+* [x] [Consumo de Promesas.](https://scotch.io/tutorials/javascript-promises-for-dummies#toc-consuming-promises)
 
 ### Testing
 
@@ -106,28 +111,36 @@ El usuario interactua con la pagina de la siguiente manera:
 
 ### Estructura del código y guía de estilo
 
-* [ ] Organizar y dividir el código en módulos (Modularización)
-* [ ] Uso de identificadores descriptivos (Nomenclatura | Semántica)
-* [ ] Uso de linter (ESLINT)
+* [x] Organizar y dividir el código en módulos (Modularización)
+* [x] Uso de identificadores descriptivos (Nomenclatura | Semántica)
+* [x] Uso de linter (ESLINT)
 
 ### Git y Github
 
-* [ ] Uso de comandos de git (add | commit | pull | status | push)
-* [ ] Manejo de repositorios de GitHub (clone | fork | gh-pages)
-* [ ] Colaboración en Github (branches | pull requests | |tags)
+* [x] Uso de comandos de git (add | commit | pull | status | push)
+* [x] Manejo de repositorios de GitHub (clone | fork | gh-pages)
+* [x] Colaboración en Github (branches | pull requests | |tags)
 * [ ] Organización en Github (projects | issues | labels | milestones)
 
 ### Firebase
 
-* [ ] [Firestore.](https://firebase.google.com/docs/firestore)
-* [ ] [Firebase Auth.](https://firebase.google.com/docs/auth/web/start)
+* [x] [Firestore.](https://firebase.google.com/docs/firestore)
+* [x] [Firebase Auth.](https://firebase.google.com/docs/auth/web/start)
 * [ ] [Firebase security rules.](https://firebase.google.com/docs/rules)
-* [ ] Observadores. ([onAuthStateChanged](https://firebase.google.com/docs/auth/web/manage-users?hl=es#get_the_currently_signed-in_user)
+* [x] Observadores. ([onAuthStateChanged](https://firebase.google.com/docs/auth/web/manage-users?hl=es#get_the_currently_signed-in_user)
  | [onSnapshot](https://firebase.google.com/docs/firestore/query-data/listen#listen_to_multiple_documents_in_a_collection))
 
 ### UX
 
-* [ ] Diseñar la aplicación pensando y entendiendo al usuario.
-* [ ] Crear prototipos para obtener feedback e iterar.
-* [ ] Aplicar los principios de diseño visual (contraste, alineación, jerarquía)
-* [ ] Planear y ejecutar tests de usabilidad.
+* [x] Diseñar la aplicación pensando y entendiendo al usuario.
+* [x] Crear prototipos para obtener feedback e iterar.
+* [x] Aplicar los principios de diseño visual (contraste, alineación, jerarquía)
+* [x] Planear y ejecutar tests de usabilidad.
+
+## 6. AUTORES
+
+Daniela Romero Vera [@DanielaRomeroV](https://github.com/DanielaRomeroV)
+
+Clara Escobar Sarmiento [@Claraescobar123](https://github.com/Claraescobar123)
+
+Diana Catalina Olarte [@dcoa](https://github.com/dcoa)
