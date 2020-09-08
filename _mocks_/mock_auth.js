@@ -34,7 +34,8 @@ const auth = {
         resolve();
         reject('error');
       })
-    }
+    },
+  
 }
 
 export default jest.fn(() => {

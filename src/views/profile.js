@@ -1,6 +1,6 @@
 import { currentUser } from '../lib/firebaseAuth.js';
 import { currentUserPost, deletePost, updateDataField, updateBiography } from '../lib/firebaseFirestore.js';
-
+import printPost from '../components/printPost.js';
 
 
 export default () => {
@@ -85,7 +85,7 @@ export default () => {
 
   const postProfile = document.createElement('section');
   postProfile.setAttribute('id', 'profileBody');
-  currentUserPost(postProfile, currentUser());
+  currentUserPost(postProfile, currentUser(), printPost);
   profileContainer.appendChild(profile);
   profileContainer.appendChild(postProfile);
 

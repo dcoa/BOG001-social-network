@@ -1,4 +1,3 @@
-import printPost from '../components/printPost.js';
 
 export const commentPublish = (comment, category, userID) => {
   try {
@@ -14,7 +13,7 @@ export const commentPublish = (comment, category, userID) => {
   }
 };
 
-export const loadPost = async (containerDOM) => {
+export const loadPost = async (containerDOM, callback) => {
   try {
     const users = await userInfo();
     await data.collection('post').orderBy('date', 'desc').onSnapshot((querySnapshot) => {
@@ -23,7 +22,7 @@ export const loadPost = async (containerDOM) => {
         const postid = doc.id;
         const post = doc.data();
         const user = users.find(user => user.id === post.userID);
-        containerDOM.appendChild(printPost(post, user, postid));
+        containerDOM.appendChild(callback(post, user, postid));
       });
     });
   } catch (e) {
@@ -32,7 +31,7 @@ export const loadPost = async (containerDOM) => {
   }
 };
 
-export const currentUserPost = async (containerDOM, currentUser) => {
+export const currentUserPost = async (containerDOM, currentUser, callback) => {
   try {
     const user = {
       name: currentUser.displayName,
@@ -44,7 +43,7 @@ export const currentUserPost = async (containerDOM, currentUser) => {
         querySnapshot.forEach(async (doc) => {
           const postid = doc.id;
           const post = doc.data();
-          containerDOM.appendChild(printPost(post, user, postid));
+          containerDOM.appendChild(callback(post, user, postid));
         });
       });
   } catch (e) {
