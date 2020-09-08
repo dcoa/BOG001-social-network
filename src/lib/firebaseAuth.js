@@ -1,9 +1,9 @@
-// createAccount
+
 export function currentUser() {
   const user = auth.currentUser;
   return user;
 }
-
+// createAccount
 export async function signUp(email, password, name, birthday) {
   try {
     const newUser = await auth.createUserWithEmailAndPassword(email, password);

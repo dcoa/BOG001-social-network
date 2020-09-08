@@ -30,6 +30,8 @@ export default (userPhoto, userID) => {
   photo.src = `${userPhoto}`;
   const publish = modal.querySelector('#formComment');
   // const img = form.loadImg.value;
+  
+//Crea un nuevo documento post en firebaseFirestore
   publish.addEventListener('submit', (e) => {
     e.preventDefault();
     const comment = publish.comment.value;

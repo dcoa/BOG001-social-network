@@ -20,6 +20,7 @@ export default () => {
   timelineContainer.appendChild(card);
   const modal = timelineContainer.appendChild(publish(user.photoURL, user.uid));
 
+//Carga los post de todos los usuarios dentro de la sección card
   loadPost(card, printPost);
 
   newBtn.addEventListener('click', () => {

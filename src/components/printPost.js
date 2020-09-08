@@ -26,6 +26,7 @@ export default (post, user, postid) => {
   const userid = currentUser();
   let pushLike = post.likes.some(likes => likes === userid.uid);
 
+  //Selecciona el icono a mostrar de acuerdo a la categoría del post
   const categoryIcon = newpost.querySelector('.categories');
   switch (post.category) {
     case 'Movie':
@@ -100,6 +101,7 @@ export default (post, user, postid) => {
   const btnEdit = icons.querySelector('#edit');
   const btnUpdate = newpost.querySelector('.update');
 
+//Activar campo de editar
   btnEdit.addEventListener('click', () => {
     btnUpdate.style.display = 'block';
     editPost.contentEditable = true;
@@ -107,6 +109,7 @@ export default (post, user, postid) => {
     console.log(editPost.innerHTML);
   });
 
+//Editar post a firebaseFirestore
   btnUpdate.addEventListener('click', () => {
     updateDataField('post', postId, { comment: editPost.innerHTML });
     console.log(postId, editPost.innerHTML);

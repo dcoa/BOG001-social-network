@@ -10,14 +10,14 @@
 @import "css/modal.css";
 @import "css/404.css";
 
-*{
+* {
   margin: 0px;
   padding: 0px;
   box-sizing: border-box;
 }
 
 
-body{
+body {
   color: #FFFFFF;
   font-size: 16px;
   display: flex;
@@ -26,23 +26,23 @@ body{
   width: 100vw;
 }
 
-header{
+header {
   display: none;
   height: 67px;
   padding: 10px;
   border-bottom: 3px solid #FFFFFF;
 }
 
-h2{
+h2 {
   font-family: 'Comfortaa';
   font-size: 1.2em;
 }
 
-label, p{
+label, p {
   font-family: 'Source Sans Pro';
 }
 
-input{
+input {
   text-align: center;
   height: 30px;
   width: 200px;
@@ -50,7 +50,7 @@ input{
   border-radius: 5px;
 }
 
-a{
+a {
   text-decoration: none;
   color: #05ADBA;
 }
@@ -71,7 +71,6 @@ a{
 .btn:hover {
    background: cadetblue ;
    border-color: cadetblue;
-
 }
 
 footer{
@@ -101,6 +100,7 @@ header > nav ul li img{
   width: 15px;
   margin: 0 20px;
 }
+
 header > nav ul{
   position: absolute;
   padding-inline-start: 0;
@@ -115,6 +115,7 @@ header > nav ul{
   text-align: left;
   transition: all .5s;
 }
+
 header > nav ul li{
   display: block;
   padding: 5px;
@@ -206,13 +207,15 @@ header {
 
 
 @media screen and (min-width: 1000px){
-  header{
+  header {
     width: 100vw;
     height: 100px;
   }
-  #img-logo{
+
+  #img-logo {
     width: 80px;
   }
+
   header nav {
   width: 90%;
 	margin:10px auto;
@@ -232,12 +235,12 @@ header {
     transition: none;
   }
 
-  header > nav ul li{
+  header > nav ul li {
     	line-height: normal;
       border: none;
   }
 
-  header > nav ul li img{
+  header > nav ul li img {
     width: 40px;
   }
 
@@ -255,7 +258,7 @@ header {
   	background:#05ADBA;
   }
 
-  footer{
+  footer {
     height: 70px;
     font-size: 1em;
   }

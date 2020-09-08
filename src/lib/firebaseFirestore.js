@@ -1,4 +1,4 @@
-
+//Crear un nuevo post
 export const commentPublish = (comment, category, userID) => {
   try {
     const userDocRef = data.collection('post').doc().set({
@@ -13,6 +13,7 @@ export const commentPublish = (comment, category, userID) => {
   }
 };
 
+//Cargar los posrt de todos los usuarios
 export const loadPost = async (containerDOM, callback) => {
   try {
     const users = await userInfo();
@@ -31,6 +32,7 @@ export const loadPost = async (containerDOM, callback) => {
   }
 };
 
+//Cargar post del usuario logueado
 export const currentUserPost = async (containerDOM, currentUser, callback) => {
   try {
     const user = {
@@ -52,6 +54,7 @@ export const currentUserPost = async (containerDOM, currentUser, callback) => {
   }
 };
 
+//Eliminar post seleccionado
 export const deletePost = async (id) => {
   try {
     await data.collection('post').doc(id).delete();
@@ -60,6 +63,7 @@ export const deletePost = async (id) => {
   }
 };
 
+// Traer la información de todos los usuarios de la app
 export const userInfo = async () => {
   const users = [];
   await data.collection('users').get().then((querySnapshot) => {
@@ -75,6 +79,7 @@ export const userInfo = async () => {
   return users;
 };
 
+//Editar campo dentro de una colección
 export const updateDataField = async (collectionName, id, field) => {
   try {
     await data.collection(collectionName).doc(id).update(field);
@@ -83,6 +88,7 @@ export const updateDataField = async (collectionName, id, field) => {
   }
 };
 
+//Mostrar cambios en el campo de biografía
 export const updateBiography = async (id, containerBio) => {
   try {
     await data.collection('users').doc(id).onSnapshot((querySnapshot) => {
@@ -95,7 +101,7 @@ export const updateBiography = async (id, containerBio) => {
   }
 };
 
-// coloca y quita los likes.
+// Coloca y quita los likes.
 export async function likePost(currentUserId, postId, pushLike) {
   const postRef = data.collection('post').doc(postId);
   if (pushLike) {
