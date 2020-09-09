@@ -1,0 +1,265 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Comfortaa:wght@300&family=Source+Sans+Pro&display=swap');
+
+@import "css/home.css";
+@import "css/login.css";
+@import "css/createAccount.css";
+@import "css/thanksAccount.css";
+@import "css/recover.css";
+@import "css/timeline.css";
+@import "css/profile.css";
+@import "css/modal.css";
+@import "css/404.css";
+
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+
+body {
+  color: #FFFFFF;
+  font-size: 16px;
+  display: flex;
+  flex-direction: column;
+  background-color: #000;
+  width: 100vw;
+}
+
+header {
+  display: none;
+  height: 67px;
+  padding: 10px;
+  border-bottom: 3px solid #FFFFFF;
+}
+
+h2 {
+  font-family: 'Comfortaa';
+  font-size: 1.2em;
+}
+
+label, p {
+  font-family: 'Source Sans Pro';
+}
+
+input {
+  text-align: center;
+  height: 30px;
+  width: 200px;
+  border: none;
+  border-radius: 5px;
+}
+
+a {
+  text-decoration: none;
+  color: #05ADBA;
+}
+
+
+.btn{
+  align-self: center;
+  text-align: center;
+  height: 40px;
+  width: 200px;
+  background: #05ADBA;
+  border: 2px solid #06B8C7;
+  border-radius: 5px;
+  font-family: 'Comfortaa';
+  color: #FFFFFF;
+
+}
+.btn:hover {
+   background: cadetblue ;
+   border-color: cadetblue;
+}
+
+footer{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  font-family: 'Anton', sans-serif;
+  font-size: 0.7em;
+  background: #000;
+  height: 50px;
+  border-top: 3px solid #FFFFFF;
+}
+
+
+/*MENU MURO*/
+
+.checkbtn{
+  float: right;
+}
+
+#img-logo{
+  width: 50px;
+}
+
+header > nav ul li img{
+  width: 15px;
+  margin: 0 20px;
+}
+
+header > nav ul{
+  position: absolute;
+  padding-inline-start: 0;
+  width: 55%;
+  height: 200px;
+  display: none;
+  flex-direction: column;
+  justify-content: space-around;
+  background:#06B8C7;
+  top: 67px;
+    right: -100vh;
+  text-align: left;
+  transition: all .5s;
+}
+
+header > nav ul li{
+  display: block;
+  padding: 5px;
+  border-bottom:1px solid rgba(255, 255, 255, 0.3);
+}
+
+#check:checked ~ ul{
+  display: flex;
+  right: 0;
+}
+
+header > nav ul li .optionsWall {
+  color: #FFFFFF;
+  font-family: 'Source Sans Pro';
+  font-size: 16px;
+}
+
+nav {
+  overflow-y: auto;
+  max-height: 100vh;
+}
+
+#check{
+    display: none;
+  }
+
+
+@media screen and (min-width: 768px){
+header {
+  width: 100vw;
+  height: 80px;
+  padding: 10px 30px;
+  }
+
+  header > nav ul {
+    float: right;
+    list-style-type: none;
+    flex-direction: row;
+    top: 0;
+    width: 80%;
+    height: 50px;
+    background:#000;
+    top: 0;
+    margin: 5px;
+    right: -100%;
+    text-align: center;
+    transition: none;
+  }
+
+
+  header nav {
+    width: 100%;
+    height: 100%;
+    background: black;
+  }
+
+  #check:checked ~ ul{
+    left: 0;
+  }
+
+  header > nav ul li{
+      line-height: normal;
+      border: none;
+  }
+
+  header > nav ul li img{
+    display: block;
+    margin: 0px auto;
+    width: 40px;
+  }
+
+  header > nav ul li .optionsWall {
+    display: flex;
+    flex-direction: column;
+    color:#fff;
+    padding:0px 15px;
+    display:block;
+    text-decoration:none;
+  }
+
+  .checkbtn{
+    font-size: 25px;
+    color: white;
+    float: right;
+    cursor: pointer;
+    line-height: 80px;
+  }
+}
+
+
+@media screen and (min-width: 1000px){
+  header {
+    width: 100vw;
+    height: 100px;
+  }
+
+  #img-logo {
+    width: 80px;
+  }
+
+  header nav {
+  width: 90%;
+	margin:10px auto;
+  }
+
+  header > nav ul {
+    display: flex;
+  	overflow:hidden;
+    position: absolute;
+    margin-top: 15px;
+    width: 80%;
+    height: 80px;
+    background:#000;
+    top: 0;
+    right: 0;
+    text-align: center;
+    transition: none;
+  }
+
+  header > nav ul li {
+    	line-height: normal;
+      border: none;
+  }
+
+  header > nav ul li img {
+    width: 40px;
+  }
+
+  header > nav ul li .optionsWall {
+    width: 150px;
+  	color:#fff;
+  	padding:0px 30px;
+  	display:flex;
+    flex-direction: column;
+  	text-decoration:none;
+  }
+
+  header nav ul li:hover {
+    border-color: 1px solid #05ADBA;
+  	background:#05ADBA;
+  }
+
+  footer {
+    height: 70px;
+    font-size: 1em;
+  }
+}

@@ -1,0 +1,32 @@
+.recover{
+  display: flex;
+  height: 90vh;
+  justify-content: center;
+  align-items: center;
+  background-image: url(background/recoveraccaunt.png);
+  background-size: cover;
+  background-position: center;
+  padding: 30px;
+}
+
+.cont{
+  text-align: center;
+  display: flex;
+  width: 400px;
+  height: 400px;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: column;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+h2{
+  font-family: 'Comfortaa', sans-serif;
+  font-size: 1.2em;
+}
+
+.recover p{
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 1em;
+  display: none;
+}

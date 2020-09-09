@@ -1,0 +1,27 @@
+#v404 {
+  height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url("background/404.png");
+  background-size:cover;
+}
+
+#message404{
+    background: rgb(0,0,0, 0.6);
+    max-width: 300px;
+    height: 400px;
+    color:white;
+    font-size: 15px;
+    font-family:'Comfortaa', cursive;
+    display: flex;
+    margin: auto;
+    text-align: center;
+    justify-content: space-around;
+    flex-direction: column;
+}
+
+#icono{
+    align-self: center;
+    width: 70%;
+}
