@@ -52,7 +52,7 @@ const router = (rute) => {
   }
 };
 
-//Cambio de vista
+// Cambio de vista
 window.addEventListener('hashchange', () => {
   router(window.location.hash);
   if (window.location.hash === '#timeline' || window.location.hash === '#profile') {
@@ -62,7 +62,7 @@ window.addEventListener('hashchange', () => {
   }
 });
 
-//Cerrar sesión
+// Cerrar sesión
 const logout = document.querySelector('#logout');
 logout.addEventListener('click', () => {
   signOut();

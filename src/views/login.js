@@ -26,7 +26,7 @@ export default () => {
   login.appendChild(createAccount);
   signin.appendChild(login);
 
-//Ingresar con correo y contraseña
+  // Ingresar con correo y contraseña
   input.addEventListener('submit', (e) => {
     e.preventDefault();
     const user = input.user.value;
@@ -34,7 +34,7 @@ export default () => {
     logIn(user, password);
   });
 
-//Ingresar con Google
+  // Ingresar con Google
   createAccount.querySelector('.google').addEventListener('click', () => {
     const provider = new firebase.auth.GoogleAuthProvider();
     logInGoogle(provider);

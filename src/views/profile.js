@@ -44,7 +44,7 @@ export default () => {
     biography.contentEditable = true;
   });
 
-//Permite el cambio de imagen de perfil y la sube a storage
+  // Permite el cambio de imagen de perfil y la sube a storage
   photos.addEventListener('change', () => {
     currentFile = photos.files[0];
     console.log(currentFile);
@@ -63,7 +63,7 @@ export default () => {
     }
   });
 
-//Actualiza los campos de foto y biografía
+  // Actualiza los campos de foto y biografía
   btnUpdate.addEventListener('click', () => {
     const file = currentFile;
     console.log(file);
@@ -86,7 +86,7 @@ export default () => {
     }
   });
 
-//Muestra los post del usuario logueado
+  // Muestra los post del usuario logueado
   const postProfile = document.createElement('section');
   postProfile.setAttribute('id', 'profileBody');
   currentUserPost(postProfile, currentUser(), printPost);
