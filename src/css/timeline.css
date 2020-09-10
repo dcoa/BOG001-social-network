@@ -174,4 +174,8 @@ display: none;
     width: 500px;
   }
 
+  .containerTimeline > .modal{
+    width: 500px;
+  }
+
 }
