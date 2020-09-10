@@ -173,8 +173,9 @@ display: none;
   .containerTimeline > section{
     width: 500px;
   }
+
   .containerTimeline > .modal{
-    width: 100%;
+    width: 500px;
   }
 
 }
